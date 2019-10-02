@@ -8,7 +8,7 @@
 
 - Themes
 - Verification system.
-- Password reseting.
+- Password resetting.
 - Working admin panel.
 
 # Dependencies
