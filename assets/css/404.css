@@ -1,0 +1,12 @@
+body{
+  	background-color: white;
+	color: black;
+}
+
+@font-face {
+	font-family: nintendou;
+	src: url(../assets/fonts/nintendou.ttf);
+}
+
+
+/* gradient variant: background-image: linear-gradient(to right, darkgreen , darkcyan); */

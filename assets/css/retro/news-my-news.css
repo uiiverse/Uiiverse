@@ -1,0 +1,23 @@
+h2.label:after {
+    visibility: shown;
+    border-bottom: 3px solid #00eaa9;
+    color: #00eaa9;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 17px 15px 10px;
+    line-height: 1;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left:0px;
+    content: "News";
+}
+#sidebar {
+    display:none;
+}
+#main-body {
+    padding: 44px 0 0;
+}.main-column {
+    width: 100%;
+    margin: 0 auto;
+}

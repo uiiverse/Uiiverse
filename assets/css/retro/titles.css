@@ -1,0 +1,40 @@
+/* TITLES CSS */
+.main-column {
+    width: 100%;
+    margin: 0 auto;
+}
+#main-body {
+    padding: 0px 0 170px;
+}
+
+
+.symbol.label.label-via_api {
+    display:none !important;
+}
+
+#sidebar-cover {
+    display:none;
+}
+#sidebar {
+    width: 100%;
+}
+
+.sidebar-setting {
+    display: none;
+}
+.sidebar-container {
+    margin: 0;
+    background: #fff;
+    border: none;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+<html lang="en"><head><script src="https://archive.org/includes/analytics.js?v=cf34f82" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app43.us.archive.org';v.server_ms=729;archive_analytics.send_pageview({});});</script><script type="text/javascript" src="https://web.archive.org/_static/js/ait-client-rewrite.js" charset="utf-8"></script>
+<script type="text/javascript">
+WB_wombat_Init("http://web.archive.org/web", "20180822012748", "miiverse.nintendo.net");
+</script>
+<script type="text/javascript" src="https://web.archive.org/_static/js/wbhack.js" charset="utf-8"></script>
+<script type="text/javascript">
+__wbhack.init('http://web.archive.org/web');
+</script>
+<link rel="stylesheet" type="text/css" href="https://web.archive.org/_static/css/banner-styles.css">
+<link rel="stylesheet" type="text/css" href="https://web.archive.org/_static/css/iconochive.css">
+<meta charset="utf-8">
+<title>Uiiverse</title>
+<meta content="text/css" http-equiv="content-style-type">
+<meta content="text/javascript" http-equiv="content-script-type">
+<meta content="telephone=no" name="format-detection">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="Uiiverse" name="apple-mobile-web-app-title">
+<meta content="Uiiverse is a re-creation of Nintendo's well-known social network, Miiverse. It allows you to interact with fellow Nintendo fans, give Yeahs to posts, and share screenshots of your favorite games." name="description">
+<meta content="" name="keywords">
+<link href="https://i.ibb.co/X5XG91H/download.png" rel="shortcut icon">
+<link href="https://uiiverse.xyz/assets/css/funnybone.css" rel="stylesheet" type="text/css">
+</head>
+<body class="simple-wrapper simple-wrapper-content">
+<script type="text/javascript" src="/_static/js/timestamp.js" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/graph-calc.js" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/auto-complete.js" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/toolbar.js" charset="utf-8"></script>
+<style type="text/css">
+body {
+  margin-top:0 !important;
+  padding-top:0 !important;
+  /*min-width:800px !important;*/
+}
+.wb-autocomplete-suggestions {
+    text-align: left; cursor: default; border: 1px solid #ccc; border-top: 0; background: #fff; box-shadow: -1px 1px 3px rgba(0,0,0,.1);
+    position: absolute; display: none; z-index: 2147483647; max-height: 254px; overflow: hidden; overflow-y: auto; box-sizing: border-box;
+}
+.wb-autocomplete-suggestion { position: relative; padding: 0 .6em; line-height: 23px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.02em; color: #333; }
+.wb-autocomplete-suggestion b { font-weight: bold; }
+.wb-autocomplete-suggestion.selected { background: #f0f0f0; }
+</style>
+<script type="text/javascript">
+__wm.bt(600,27,25,2,"web","https://miiverse.nintendo.net/en/","2018-08-22",1996,"/_static/",['css/banner-styles.css','css/iconochive.css']);
+</script><div class="wb-autocomplete-suggestions " style="left: 0px; top: 1px; width: 0px;"></div>
+<div id="wrapper">
+<div id="main-body">
+<div class="closed-container">
+<div class="closed-content">
+<img alt="Miiverse" class="logo" src="https://i.ibb.co/4Yx9HDq/logo.png">
+<p>Thank you to everyone who used Uiiverse so far! The Uiiverse service has been put on a hiatus.</p>
+<div class="mosaic">
+<a href="https://web.archive.org/web/20180822012748/https://i.miiverse.nintendo.net/thank_you.png">
+<img src="https://web.archive.org/web/20180822012748im_/https://i.miiverse.nintendo.net/thank_you_thumbnail.jpg">
+</a>
+<p>This mosaic was created with handwritten posts from Miiverse users. You can enlarge the image by clicking on it.</p>
+</div>
+<div class="notice">
+<h2>FAQ for people who are confused:</h2>
+<ul>
+<li>Why is Uiiverse on a hiatus?</li>
+<p>Uiiverse is on a hiatus due to the recent raids causing stress on the admins and how out of hand the situation is getting, we just need a break.</p>
+<li>How long will Uiiverse be offline for?
+
+</li>
+<p>The duration of this hiatus is currently unknown.</p></ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="copyright">
+- Uiiverse Staff
+</div>
+</div>
+</div>
+</body></html>
