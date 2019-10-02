@@ -13,6 +13,8 @@
 
 - [Apache2 HTTP Server](https://httpd.apache.org/)
 - [PHP 7.2+](https://www.php.net/downloads.php)
+- [MySQL](https://www.mysql.com/) / [MariaDB](https://mariadb.com/)
+- php-mysql
 - mod_php
 - mod_rewrite
 - [AltoRouter](https://github.com/dannyvankooten/AltoRouter)
