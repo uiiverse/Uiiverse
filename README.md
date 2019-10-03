@@ -25,7 +25,7 @@
 
 # Contributors
 
-- Robert (Pearl)
+- [Robert](https://gitlab.com/benatpearl) (Pearl)
 - [EnergeticBark](https://github.com/EnergeticBark/) ([Cedar](https://github.com/EnergeticBark/Cedar-PHP))
 - [joo](https://github.com/j0w0) (Neon, Stripe and Retro)
 
