@@ -71,9 +71,35 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST'){
 	}
 	
 	?>
+		<menu class="textarea-menu">
+                <li><label class="textarea-menu-text"><input type="radio" name="post_type" value="0" checked></label></li>
+                <li><label class="textarea-menu-memo"><input type="radio" name="post_type" value="1"></label></li>
+                <!--<li><label class="textarea-menu-poll"><input type="radio" name="post_type" value="2"></label></li>-->
+        </menu>
 		<div class="textarea-container">
 			<textarea name="text_data" class="textarea-text textarea" maxlength="800" placeholder="Share your thoughts in a post to this community."></textarea>
 		</div>
+		<div class="textarea-memo none">
+                <div id="memo-drawboard-page" class="none">
+                    <div class="window-body">
+                        <div class="memo-buttons">
+                            <button type="button" class="artwork-clear"></button>
+                            <button type="button" class="artwork-undo"></button>
+                            <button type="button" class="artwork-pencil small selected"></button>
+                            <button type="button" class="artwork-eraser small"></button>
+                            <button type="button" class="artwork-fill"></button>
+                            <input type="text" class="artwork-color">
+                            <button type="button" class="artwork-zoom"></button>
+                        </div>
+                        <div class="memo-canvas">
+                            <canvas id="artwork-canvas" zoom="2"></canvas>
+                            <canvas id="artwork-canvas-undo"></canvas>
+                            <canvas id="artwork-canvas-redo"></canvas>
+                            <input type="hidden" name="painting">
+                        </div>
+                    </div>
+                </div>
+            </div>
 <div class="post-form-footer-options">
 <div class="post-form-footer-option-inner post-form-spoiler js-post-form-spoiler test-post-form-spoiler">
 <label class="spoiler-button symbol ">

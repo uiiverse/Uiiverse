@@ -20,7 +20,31 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 		echo '<div class="feeling-selector js-feeling-selector test-feeling-selector"><label class="symbol feeling-button feeling-button-normal checked"><input type="radio" name="feeling_id" value="0" checked=""><span class="symbol-label">normal</span></label><label class="symbol feeling-button feeling-button-happy"><input type="radio" name="feeling_id" value="1"><span class="symbol-label">happy</span></label><label class="symbol feeling-button feeling-button-like"><input type="radio" name="feeling_id" value="2"><span class="symbol-label">like</span></label><label class="symbol feeling-button feeling-button-surprised"><input type="radio" name="feeling_id" value="3"><span class="symbol-label">surprised</span></label><label class="symbol feeling-button feeling-button-frustrated"><input type="radio" name="feeling_id" value="4"><span class="symbol-label">frustrated</span></label><label class="symbol feeling-button feeling-button-puzzled"><input type="radio" name="feeling_id" value="5"><span class="symbol-label">puzzled</span></label></div>';
 	}
 
-	echo '<div class="textarea-container"><textarea name="text_data" class="textarea-text textarea" maxlength="800" placeholder="Add a comment here."></textarea></div><style>#imageThing { padding: 1.8%; color: #ccc !important; background-color: var(--theme-darker) !important; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; border: 1px solid #969696; }</style><center><input type="url" id="imageThing" name="image" placeholder="Direct Image URL"></center><div class="form-buttons"><input type="submit" name="submit" class="black-button post-button disabled" value="Send" disabled=""></div></form>';
+	echo '<menu class="textarea-menu">
+	<li><label class="textarea-menu-text"><input type="radio" name="post_type" value="0" checked></label></li>
+	<li><label class="textarea-menu-memo"><input type="radio" name="post_type" value="1"></label></li>
+	<!--<li><label class="textarea-menu-poll"><input type="radio" name="post_type" value="2"></label></li>-->
+</menu><div class="textarea-container"><textarea name="text_data" class="textarea-text textarea" maxlength="800" placeholder="Add a comment here."></textarea></div>            <div class="textarea-memo none">
+	<div id="memo-drawboard-page" class="none">
+		<div class="window-body">
+			<div class="memo-buttons">
+				<button type="button" class="artwork-clear"></button>
+				<button type="button" class="artwork-undo"></button>
+				<button type="button" class="artwork-pencil small selected"></button>
+				<button type="button" class="artwork-eraser small"></button>
+				<button type="button" class="artwork-fill"></button>
+				<input type="text" class="artwork-color">
+				<button type="button" class="artwork-zoom"></button>
+			</div>
+			<div class="memo-canvas">
+				<canvas id="artwork-canvas" zoom="2"></canvas>
+				<canvas id="artwork-canvas-undo"></canvas>
+				<canvas id="artwork-canvas-redo"></canvas>
+				<input type="hidden" name="painting">
+			</div>
+		</div>
+	</div>
+</div><style>#imageThing { padding: 1.8%; color: #ccc !important; background-color: var(--theme-darker) !important; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; border: 1px solid #969696; }</style><center><input type="url" id="imageThing" name="image" placeholder="Direct Image URL"></center><div class="form-buttons"><input type="submit" name="submit" class="black-button post-button disabled" value="Send" disabled=""></div></form>';
 } else {
 	$forbidden = array("faggot", "nigga", "nigger", "fucker", "fuck", "fucking", "fucka", "zipperhead", "sex", "cunt", "anal", "dick", "cock", "bitch", "kike", "towelhead", "gook", "spic", "kill yourself", "penis", "vagina", "pussy", "kys", "suicide", "sexy", "niggers");
 	$errors = array();

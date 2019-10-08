@@ -608,6 +608,199 @@ function bindEvents() {
 	$(document).pjax('a', '#main-body', replace = true);
 }
 
+function setupDrawboard() {
+	var canvas = document.getElementById("artwork-canvas");
+	var ctx = canvas.getContext('2d');
+	
+		var haval = $("input[type=hidden][name=painting]");
+		if(haval.length) {
+			dds = new Image();
+			dds.src = haval.val();
+			dds.onload = function() {
+				ctx.drawImage(dds,0,0);
+			};
+		}
+	
+	var undoCanvas = document.getElementById('artwork-canvas-undo');
+	var undoCtx = undoCanvas.getContext('2d');
+	var redoCanvas = document.getElementById('artwork-canvas-redo');
+	var redoCtx = redoCanvas.getContext('2d');
+	undoCanvas.width = 320; undoCanvas.height = 120;
+	redoCanvas.width = 320; redoCanvas.height = 120;
+	canvas.width = 320; canvas.height = 120;
+	var mousePosOld = 0;
+	var artworkTool = {type: 0, size: 1};
+	var sizeSmall = 1;
+	var sizeMedium = 2;
+	var sizeLarge = 4;
+	var artworkColor = "#000000";
+	var artworkZoomFactor = 1;
+	function getMousePos(evt) {
+		var rect = canvas.getBoundingClientRect();
+	if(evt.type == 'touchmove') {
+		var clientX = evt.touches[0].clientX;
+		var clientY = evt.touches[0].clientY;
+	} else {
+	var clientX = evt.clientX;
+	var clientY = evt.clientY;
+	}
+	  return {
+			x: (clientX - rect.left) / artworkZoomFactor,
+			y: (clientY - rect.top) / artworkZoomFactor
+	  };
+	}
+	function drawLineNoAliasing(ctx, sx, sy, tx, ty) {
+		var dist = Math.sqrt((tx-sx)*(tx-sx)+(ty-sy)*(ty-sy));
+			var ang = Math.atan((ty-sy)/((tx-sx)==0?0.01:(tx-sx)))+((tx-sx)<0?Math.PI:0);
+		for(var i=0;i<dist;i++) {
+			ctx.fillRect(Math.round(sx + Math.cos(ang)*i),
+						 Math.round(sy + Math.sin(ang)*i),
+						 artworkTool.size, artworkTool.size);
+		}
+	}
+	function artworkUpdate(evt) {
+		//console.log('artworkUpdate()');
+		var mousePos = getMousePos(evt);
+		if(artworkTool.type < 2) {
+		if(mousePosOld == 0) mousePosOld = mousePos;
+		if(evt.which == 1 || evt.type == 'touchmove') {
+			if(artworkTool.type == 0) {
+				ctx.fillStyle = artworkColor;
+			} else {
+			ctx.fillStyle = "#fff";
+		}
+		  drawLineNoAliasing(ctx, mousePosOld.x,mousePosOld.y,mousePos.x,mousePos.y);
+	  }
+		mousePosOld = mousePos;
+		
+		save();
+		}
+	}
+	function artworkDrawOnce(evt) {
+		//console.log('artworkDrawOnce()');
+		var mousePos = getMousePos(evt);
+		if(artworkTool.type < 2) {
+		if(evt.which == 1) {
+			if(artworkTool.type == 0) {
+				ctx.fillStyle = artworkColor;
+			} else {
+			ctx.fillStyle = "#fff";
+		}
+			ctx.fillRect(Math.round(mousePos.x), Math.round(mousePos.y), artworkTool.size, artworkTool.size);
+	  }
+		} else {
+		  ctx.fillStyle = artworkColor;
+		ctx.fillFlood(mousePos.x, mousePos.y, 0);
+	  }
+	}
+	function artworkClear() {
+	artworkUndoDown();
+	ctx.fillStyle = "#fff";
+	ctx.fillRect(0, 0, 320, 120);
+	}
+	function artworkUndoDown() {
+	undoCtx.drawImage(canvas, 0, 0);
+	}
+	function artworkUndo() {
+	redoCtx.drawImage(canvas, 0, 0);
+	ctx.drawImage(undoCanvas, 0, 0);
+	undoCtx.drawImage(redoCanvas, 0, 0);
+	}
+	function artworkToolUpdate() {
+		if($(this).hasClass('artwork-eraser')) {
+			var toolType = 1;
+		} else if($(this).hasClass('artwork-fill')) {
+			var toolType = 2;
+		} else {
+			var toolType = 0;
+		}
+		if($(this).hasClass('selected')) {
+			if($(this).hasClass('small')) {
+				artworkTool = {type: toolType, size: sizeMedium};
+				$(this).removeClass('small');
+				$(this).addClass('medium');
+			} else if ($(this).hasClass('medium')) {
+	artworkTool = {type: toolType, size: sizeLarge};
+	$(this).removeClass('medium');
+	$(this).addClass('large');
+	} else if ($(this).hasClass('large')) {
+	artworkTool = {type: toolType, size: sizeSmall};
+	$(this).removeClass('large');
+	$(this).addClass('small');
+	} else {
+	artworkTool = {type: toolType};
+	}
+	} else {
+	$('.memo-buttons button').removeClass('selected');
+	$(this).addClass('selected');
+	if($(this).hasClass('small')) {
+	artworkTool = {type: toolType, size: sizeSmall};
+	} else if ($(this).hasClass('medium')) {
+	artworkTool = {type: toolType, size: sizeMedium};
+	} else if ($(this).hasClass('large')) {
+	artworkTool = {type: toolType, size: sizeLarge};
+	} else {
+	artworkTool = {type: toolType};
+	}
+	}
+	}
+	function artworkZoomUpdate(evt) {
+		if(artworkZoomFactor == 1) {
+		  artworkZoomFactor = 2;
+			$('#artwork-canvas').css('width', '640px');
+	  } else if(artworkZoomFactor == 2) {
+		  artworkZoomFactor = 4;
+			$('#artwork-canvas').css('width', '1280px');
+			$(this).addClass('out');
+	  } else {
+		  artworkZoomFactor = 1;
+			$('#artwork-canvas').css('width', '320px');
+			$(this).removeClass('out');
+	  }
+	}
+	function save() {
+		var dataURL = canvas.toDataURL();
+		if(typeof dataURL !== undefined) {
+		$("input[type=hidden][name=painting]").attr("value", dataURL.split(",")[1]);
+		}
+	}
+	artworkClear();
+	$(document).on('mousemove', artworkUpdate);
+	$(document).on('touchstart', function(){
+		mousePosOld = 0;
+	});
+	$(document).on('touchmove', artworkUpdate);
+	$('#artwork-canvas').on('mousedown', artworkUndoDown);
+	$('#artwork-canvas').on('mousedown', artworkDrawOnce);
+	$('button').contextmenu(function() { $(this).click(); return false });
+	$('.artwork-clear').click(artworkClear);
+	$('.artwork-undo').click(artworkUndo);
+	$('.artwork-pencil, .artwork-eraser, .artwork-fill').click(artworkToolUpdate);
+	$(".artwork-color").spectrum({
+		color: "#000000",
+		preferredFormat: "hex",
+		showInput: true,
+		showPalette: true,
+		change: function(color) {
+			artworkColor = color;
+		},
+		palette: [["#000000", "#808080"], ["#ff0000", "#804000"], ["#ff8000", "#c08000"], ["#ffff00", "#fff8dc"], ["#00c700", "#008000"], ["#00ffff", "#00a0a0"], ["#0000ff", "#0080ff"], ["#ff00ff", "#800080"]]
+	});
+	$('.artwork-zoom').click(artworkZoomUpdate);
+	$('.memo-finish-btn').on('click',function(){
+		var dataURL = canvas.toDataURL();
+		postFile(dataURL, "image/png", true);
+	});
+	}
+	var fixe = false;
+	function openDrawboardModal() {
+			if(innerWidth <= 800) {
+				fixe = true;
+			}
+			$('#memo-drawboard-page').removeClass("none");
+			return true;
+	}
+
 $(document).ready(function() {
 	window.tip = tippy('.empathy', {
 		animation: 'shift-away',
