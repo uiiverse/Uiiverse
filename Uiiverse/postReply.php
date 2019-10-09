@@ -20,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 		echo '<div class="feeling-selector js-feeling-selector test-feeling-selector"><label class="symbol feeling-button feeling-button-normal checked"><input type="radio" name="feeling_id" value="0" checked=""><span class="symbol-label">normal</span></label><label class="symbol feeling-button feeling-button-happy"><input type="radio" name="feeling_id" value="1"><span class="symbol-label">happy</span></label><label class="symbol feeling-button feeling-button-like"><input type="radio" name="feeling_id" value="2"><span class="symbol-label">like</span></label><label class="symbol feeling-button feeling-button-surprised"><input type="radio" name="feeling_id" value="3"><span class="symbol-label">surprised</span></label><label class="symbol feeling-button feeling-button-frustrated"><input type="radio" name="feeling_id" value="4"><span class="symbol-label">frustrated</span></label><label class="symbol feeling-button feeling-button-puzzled"><input type="radio" name="feeling_id" value="5"><span class="symbol-label">puzzled</span></label></div>';
 	}
 
-	echo '<div class="textarea-with-menu active-text><menu class="textarea-menu">
+	echo '<div class="textarea-with-menu active-text>
+	<menu class="textarea-menu">
 	<li><label class="textarea-menu-text"><input type="radio" name="post_type" value="0" checked></label></li>
 	<li><label class="textarea-menu-memo"><input type="radio" name="post_type" value="1"></label></li>
 	<!--<li><label class="textarea-menu-poll"><input type="radio" name="post_type" value="2"></label></li>-->

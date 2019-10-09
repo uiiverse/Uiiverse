@@ -387,6 +387,35 @@ function bindEvents() {
 		var text_remaining = 800 - text_length;
 		$('.textarea-feedback').html('<font color="#646464" style="font-size: 13px; padding: 0 3px 0 7px;">'+text_remaining+'</font> Characters Remaining');
 	});
+	
+	$('.textarea-text').off().on('click', function() {
+        if($('#post-form').hasClass('folded')) {
+            $("label.textarea-menu-memo").on("click", function() {
+            var menu = $("div.textarea-with-menu");
+            var memo = $("div.textarea-memo");
+            var text = $("div.textarea-container");
+            if(menu.hasClass("active-text")) {
+                menu.removeClass("active-text");
+                menu.addClass("active-memo");
+                memo.removeClass("none");
+                text.addClass("none");
+            }
+            if(openDrawboardModal()) {
+                setupDrawboard();
+            }
+            });
+            $("label.textarea-menu-text").on("click", switchtext);
+            function switchtext() {
+                var menu = $("div.textarea-with-menu");
+                menu.removeClass("active-memo");
+                menu.addClass("active-text");
+                $("div.textarea-container").removeClass("none");
+                $("div.textarea-memo").addClass("none");
+            }
+            $(".post-button").on("click", function() { switchtext(); $("#artwork-canvas")[0].getContext("2d").clearRect(0, 0, 320, 120); $("img[id=\"drawing\"]").attr("src", ""); });
+        }
+    	$('#post-form').removeClass('folded');
+    });
 
 	$(document).off().on('click',function (e) {
 		footerUl = $('.open-global-my-menu');
