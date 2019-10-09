@@ -71,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST'){
 	}
 	
 	?>
+	<div class="textarea-with-menu active-text">
 		<menu class="textarea-menu">
                 <li><label class="textarea-menu-text"><input type="radio" name="post_type" value="0" checked></label></li>
                 <li><label class="textarea-menu-memo"><input type="radio" name="post_type" value="1"></label></li>
