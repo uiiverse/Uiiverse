@@ -2785,7 +2785,7 @@ input.file-button {
 .textarea-with-menu .textarea-menu-text:before,
 .textarea-with-menu .textarea-menu-memo:before {
   content: "";
-  background: url('https://d1akpag8su1p2e.cloudfront.net/img/form-icons.png');
+  background: url(/assets/img/form-icons.png);
   position: absolute;
   top: 3px;
   left: 50%;
