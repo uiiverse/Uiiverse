@@ -35,6 +35,7 @@
 - Robert (again) for letting me use most of his code
 - Seth for doing Cedar
 - joo for themes and JS
+- PF2M for letting me use his drawing code
 - The Uiiverse Team for helping me do this
 - Everyone at Uiiverse for supporting the project
 - You for checking this out
