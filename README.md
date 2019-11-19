@@ -28,14 +28,12 @@
 - [Robert](https://gitlab.com/benatpearl) (Pearl)
 - [EnergeticBark](https://github.com/EnergeticBark/) ([Cedar](https://github.com/EnergeticBark/Cedar-PHP))
 - [joo](https://github.com/j0w0) (Neon, Stripe and Retro)
-- [PF2M](https://github.com/PF2M) (Drawing)
 
 # Thanks to
 
 - Robert (again) for letting me use most of his code
 - Seth for doing Cedar
 - joo for themes and JS
-- PF2M for letting me use his drawing code
 - The Uiiverse Team for helping me do this
 - Everyone at Uiiverse for supporting the project
 - You for checking this out
