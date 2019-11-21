@@ -4,6 +4,8 @@
 
 [Official website](https://uiiverse.xyz/)
 
+[Documentation](https://uiiverse.readthedocs.io/en/latest/)
+
 [Discord server](https://discord.gg/7ZE4dp5)
 
 # Features
