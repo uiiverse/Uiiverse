@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 02, 2019 at 07:16 PM
--- Server version: 10.3.16-MariaDB-1:10.3.16+maria~stretch-log
--- PHP Version: 7.3.9-1~deb10u1
+-- Servidor: localhost
+-- Tiempo de generación: 30-11-2019 a las 09:37:37
+-- Versión del servidor: 10.3.18-MariaDB-0+deb10u1-log
+-- Versión de PHP: 7.3.11-1~deb10u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `uiiverse_db`
+-- Base de datos: `uiiverse_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_messages`
+-- Estructura de tabla para la tabla `admin_messages`
 --
 
 CREATE TABLE `admin_messages` (
@@ -43,7 +43,7 @@ CREATE TABLE `admin_messages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blacklist`
+-- Estructura de tabla para la tabla `blacklist`
 --
 
 CREATE TABLE `blacklist` (
@@ -57,7 +57,7 @@ CREATE TABLE `blacklist` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cloudinary_keys`
+-- Estructura de tabla para la tabla `cloudinary_keys`
 --
 
 CREATE TABLE `cloudinary_keys` (
@@ -70,7 +70,7 @@ CREATE TABLE `cloudinary_keys` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `favorite_titles`
+-- Estructura de tabla para la tabla `favorite_titles`
 --
 
 CREATE TABLE `favorite_titles` (
@@ -82,7 +82,7 @@ CREATE TABLE `favorite_titles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `follows`
+-- Estructura de tabla para la tabla `follows`
 --
 
 CREATE TABLE `follows` (
@@ -94,7 +94,7 @@ CREATE TABLE `follows` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifs`
+-- Estructura de tabla para la tabla `notifs`
 --
 
 CREATE TABLE `notifs` (
@@ -111,7 +111,7 @@ CREATE TABLE `notifs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Estructura de tabla para la tabla `posts`
 --
 
 CREATE TABLE `posts` (
@@ -132,7 +132,7 @@ CREATE TABLE `posts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profiles`
+-- Estructura de tabla para la tabla `profiles`
 --
 
 CREATE TABLE `profiles` (
@@ -153,7 +153,7 @@ CREATE TABLE `profiles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `replies`
+-- Estructura de tabla para la tabla `replies`
 --
 
 CREATE TABLE `replies` (
@@ -170,7 +170,7 @@ CREATE TABLE `replies` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reports`
+-- Estructura de tabla para la tabla `reports`
 --
 
 CREATE TABLE `reports` (
@@ -187,7 +187,7 @@ CREATE TABLE `reports` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `titles`
+-- Estructura de tabla para la tabla `titles`
 --
 
 CREATE TABLE `titles` (
@@ -209,7 +209,7 @@ CREATE TABLE `titles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
@@ -220,13 +220,15 @@ CREATE TABLE `users` (
   `user_face` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `date_created` datetime NOT NULL,
   `ip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `user_level` int(1) NOT NULL DEFAULT 0
+  `user_level` int(1) NOT NULL DEFAULT 0,
+  `2fa_enabled` int(1) NOT NULL DEFAULT 0,
+  `2fa_secret` varchar(80) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `yeahs`
+-- Estructura de tabla para la tabla `yeahs`
 --
 
 CREATE TABLE `yeahs` (
@@ -238,11 +240,11 @@ CREATE TABLE `yeahs` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `admin_messages`
+-- Indices de la tabla `admin_messages`
 --
 ALTER TABLE `admin_messages`
   ADD PRIMARY KEY (`admin_id`),
@@ -252,7 +254,7 @@ ALTER TABLE `admin_messages`
   ADD KEY `admin_post` (`admin_post`);
 
 --
--- Indexes for table `blacklist`
+-- Indices de la tabla `blacklist`
 --
 ALTER TABLE `blacklist`
   ADD PRIMARY KEY (`blacklist_id`),
@@ -260,13 +262,13 @@ ALTER TABLE `blacklist`
   ADD KEY `blibfk2` (`target`);
 
 --
--- Indexes for table `cloudinary_keys`
+-- Indices de la tabla `cloudinary_keys`
 --
 ALTER TABLE `cloudinary_keys`
   ADD PRIMARY KEY (`key_id`);
 
 --
--- Indexes for table `favorite_titles`
+-- Indices de la tabla `favorite_titles`
 --
 ALTER TABLE `favorite_titles`
   ADD PRIMARY KEY (`fav_id`),
@@ -274,7 +276,7 @@ ALTER TABLE `favorite_titles`
   ADD KEY `title_id` (`title_id`);
 
 --
--- Indexes for table `follows`
+-- Indices de la tabla `follows`
 --
 ALTER TABLE `follows`
   ADD PRIMARY KEY (`follow_id`),
@@ -282,7 +284,7 @@ ALTER TABLE `follows`
   ADD KEY `follow_to` (`follow_to`);
 
 --
--- Indexes for table `notifs`
+-- Indices de la tabla `notifs`
 --
 ALTER TABLE `notifs`
   ADD PRIMARY KEY (`notif_id`),
@@ -291,7 +293,7 @@ ALTER TABLE `notifs`
   ADD KEY `notif_post` (`notif_post`);
 
 --
--- Indexes for table `posts`
+-- Indices de la tabla `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
@@ -299,13 +301,13 @@ ALTER TABLE `posts`
   ADD KEY `posts_ibfk_2` (`post_title`);
 
 --
--- Indexes for table `profiles`
+-- Indices de la tabla `profiles`
 --
 ALTER TABLE `profiles`
   ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `replies`
+-- Indices de la tabla `replies`
 --
 ALTER TABLE `replies`
   ADD PRIMARY KEY (`reply_id`),
@@ -313,28 +315,28 @@ ALTER TABLE `replies`
   ADD KEY `reply_by_id` (`reply_by_id`);
 
 --
--- Indexes for table `reports`
+-- Indices de la tabla `reports`
 --
 ALTER TABLE `reports`
   ADD PRIMARY KEY (`report_id`),
   ADD KEY `repibfk1` (`source`);
 
 --
--- Indexes for table `titles`
+-- Indices de la tabla `titles`
 --
 ALTER TABLE `titles`
   ADD PRIMARY KEY (`title_id`),
   ADD KEY `title_by` (`title_by`);
 
 --
--- Indexes for table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `user_name` (`user_name`);
 
 --
--- Indexes for table `yeahs`
+-- Indices de la tabla `yeahs`
 --
 ALTER TABLE `yeahs`
   ADD PRIMARY KEY (`yeah_id`),
@@ -342,68 +344,68 @@ ALTER TABLE `yeahs`
   ADD KEY `yeah_by` (`yeah_by`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `admin_messages`
+-- AUTO_INCREMENT de la tabla `admin_messages`
 --
 ALTER TABLE `admin_messages`
-  MODIFY `admin_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `admin_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `cloudinary_keys`
+-- AUTO_INCREMENT de la tabla `cloudinary_keys`
 --
 ALTER TABLE `cloudinary_keys`
   MODIFY `key_id` int(8) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `favorite_titles`
+-- AUTO_INCREMENT de la tabla `favorite_titles`
 --
 ALTER TABLE `favorite_titles`
-  MODIFY `fav_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
+  MODIFY `fav_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `follows`
+-- AUTO_INCREMENT de la tabla `follows`
 --
 ALTER TABLE `follows`
-  MODIFY `follow_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=311;
+  MODIFY `follow_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
--- AUTO_INCREMENT for table `notifs`
+-- AUTO_INCREMENT de la tabla `notifs`
 --
 ALTER TABLE `notifs`
-  MODIFY `notif_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3758;
+  MODIFY `notif_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=407;
 
 --
--- AUTO_INCREMENT for table `posts`
+-- AUTO_INCREMENT de la tabla `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000000000;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99583656;
 
 --
--- AUTO_INCREMENT for table `replies`
+-- AUTO_INCREMENT de la tabla `replies`
 --
 ALTER TABLE `replies`
-  MODIFY `reply_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99971007;
+  MODIFY `reply_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99492676;
 
 --
--- AUTO_INCREMENT for table `reports`
+-- AUTO_INCREMENT de la tabla `reports`
 --
 ALTER TABLE `reports`
   MODIFY `report_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=454;
+  MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
--- AUTO_INCREMENT for table `yeahs`
+-- AUTO_INCREMENT de la tabla `yeahs`
 --
 ALTER TABLE `yeahs`
-  MODIFY `yeah_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13371741;
+  MODIFY `yeah_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
