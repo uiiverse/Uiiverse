@@ -1,4 +1,5 @@
 <?php
-$2fa = new RobThree\Auth\TwoFactorAuth('Uiiverse');
-global $2fa
+require_once("GoogleAuthenticator.php");
+$tfa = new PHPGangsta_GoogleAuthenticator();
+global $tfa
 ?>

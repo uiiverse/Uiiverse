@@ -113,9 +113,8 @@ if(empty($_SESSION['signed_in'])){
 		if (empty($errors)) {
             if ($user['2fa_enabled'] == 1) {
                 $_SESSION['user_id'] = $user['user_id'];
-                session_start();
                 echo '<META HTTP-EQUIV="refresh" content="0;URL=/2fa">';
-            }
+            } else {
     			echo '<div id="main-body">Redirecting to Uiiverse...';
     			if ($_POST['rememberMe'] == true) {
     				$lifetime = 2419200;
@@ -123,11 +122,11 @@ if(empty($_SESSION['signed_in'])){
     			}
     			$_SESSION['signed_in'] = true;
     			$_SESSION['user_id'] = $user['user_id'];
-    			session_start();
     			$update_ip = $dbc->prepare('UPDATE users SET ip = ? WHERE user_id = ?');
     			$update_ip->bind_param('si', $_SERVER['HTTP_CF_CONNECTING_IP'], $_SESSION['user_id']);
     			$update_ip->execute();
-    			echo '<META HTTP-EQUIV="refresh" content="0;URL=/">';
+				echo '<META HTTP-EQUIV="refresh" content="0;URL=/">';
+			}
 		} else {
 			echo '<script type="text/javascript">alert("' . $errors[0] . '");</script><META HTTP-EQUIV="refresh" content="0;URL=/login">';
 		}

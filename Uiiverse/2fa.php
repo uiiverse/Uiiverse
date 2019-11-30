@@ -32,13 +32,17 @@ if(empty($_SESSION['signed_in'])){
         <?php
         } else {
         	if (isset($_POST['submit'])) {
-        		$errors = array()
+                $errors = array();
+
                 $get_user = $dbc->prepare('SELECT * FROM users WHERE user_id = ? LIMIT 1');
-                $get_user->bind_param('s', $_SESSION['user_id']);
-                $get_user->execute();
-                $user = $get_user->get_result();
-                $result = $2fa->verifyCode($user['2fa_secret'], $_POST['code']);
-                if ($result == false) {
+		        $get_user->bind_param('i', $_SESSION['user_id']);
+		        $get_user->execute();
+		        $user_result = $get_user->get_result();
+		        $user = $user_result->fetch_assoc();
+                
+                $tfaresult = $tfa->verifyCode($user['2fa_secret'], $_POST['code']);
+
+                if ($tfaresult == FALSE) {
                     $errors[] = "The auth code didn't match. Please try again.";
                 }
 
@@ -55,4 +59,3 @@ if(empty($_SESSION['signed_in'])){
         	}
         }
     }
-}
