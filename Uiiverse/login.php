@@ -111,7 +111,7 @@ if(empty($_SESSION['signed_in'])){
 		} 
 
 		if (empty($errors)) {
-            if ($user.2fa_enabled == 1) {
+            if ($user['2fa_enabled'] == 1) {
                 $_SESSION['user_id'] = $user['user_id'];
                 session_start();
                 echo '<META HTTP-EQUIV="refresh" content="0;URL=/2fa">';

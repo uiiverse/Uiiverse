@@ -37,7 +37,7 @@ if(empty($_SESSION['signed_in'])){
                 $get_user->bind_param('s', $_SESSION['user_id']);
                 $get_user->execute();
                 $user = $get_user->get_result();
-                $result = $2fa->verifyCode($user.2fa_secret, $_POST['code']);
+                $result = $2fa->verifyCode($user['2fa_secret'], $_POST['code']);
                 if ($result == false) {
                     $errors[] = "The auth code didn't match. Please try again.";
                 }
