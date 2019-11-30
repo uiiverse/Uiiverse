@@ -208,6 +208,15 @@ Posting such information is against the Uiiverse Code of Conduct and may result 
     </div>
     <p class="note">Only the day and month are stored.</p>
   </li>
+  <li>
+    <p class="settings-label">Set up Two Factor Authentication</p>
+    <p class="note">Two Factor Authentication uses an app on your phone to generate a unique code every 30 seconds. This adds a second layer of security to your Uiiverse account, so malicious users are less likely to break through.</p>
+    <div class="select-content">
+      <div class="select-button">
+        <a href="/2fa" class="black-button">Enable Two Factor Authentication</a>
+      </div>
+    </div>
+  </li>
 </ul>
 <div class="form-buttons">
 <input type="submit" name="submit" class="black-button apply-button" value="Save Settings" /></div></form></div></div></div></div>';
