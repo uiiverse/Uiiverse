@@ -57,10 +57,7 @@ if(empty($_SESSION['signed_in'])){
 						<label><input type="password" name="password" maxlength="16" title="Password" placeholder="Password"></label>
 					</div>
 					<div id="hb-checkbox">
-						<input type="checkbox" name="rememberMe">
-						<label class="" for="remember_box">
-							Remember me for 30 days
-						</label>
+						<input type="checkbox" name="rememberMe" title="Remember me for 30 days">
 					</div>
         				<input type="submit" name="submit" class="hb-btn hb-is-decide" style="margin-top: 4px;" id="btn_text" value="Sign In">
         			</div>
@@ -114,18 +111,23 @@ if(empty($_SESSION['signed_in'])){
 		} 
 
 		if (empty($errors)) {
-			echo '<div id="main-body">Redirecting to Uiiverse...';
-			if ($_POST['rememberMe'] == true) {
-				$lifetime = 2419200;
-				session_set_cookie_param($lifetime);
-			}
-			$_SESSION['signed_in'] = true;
-			$_SESSION['user_id'] = $user['user_id'];
-			session_start();
-			$update_ip = $dbc->prepare('UPDATE users SET ip = ? WHERE user_id = ?');
-			$update_ip->bind_param('si', $_SERVER['HTTP_CF_CONNECTING_IP'], $_SESSION['user_id']);
-			$update_ip->execute();
-			echo '<META HTTP-EQUIV="refresh" content="0;URL=/">';
+            if ($user.2fa_enabled == 1) {
+                $_SESSION['user_id'] = $user['user_id'];
+                session_start();
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=/2fa">';
+            }
+    			echo '<div id="main-body">Redirecting to Uiiverse...';
+    			if ($_POST['rememberMe'] == true) {
+    				$lifetime = 2419200;
+    				session_set_cookie_param($lifetime);
+    			}
+    			$_SESSION['signed_in'] = true;
+    			$_SESSION['user_id'] = $user['user_id'];
+    			session_start();
+    			$update_ip = $dbc->prepare('UPDATE users SET ip = ? WHERE user_id = ?');
+    			$update_ip->bind_param('si', $_SERVER['HTTP_CF_CONNECTING_IP'], $_SESSION['user_id']);
+    			$update_ip->execute();
+    			echo '<META HTTP-EQUIV="refresh" content="0;URL=/">';
 		} else {
 			echo '<script type="text/javascript">alert("' . $errors[0] . '");</script><META HTTP-EQUIV="refresh" content="0;URL=/login">';
 		}

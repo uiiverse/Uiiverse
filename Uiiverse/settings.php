@@ -212,9 +212,14 @@ Posting such information is against the Uiiverse Code of Conduct and may result 
     <p class="settings-label">Set up Two Factor Authentication</p>
     <p class="note">Two Factor Authentication uses an app on your phone to generate a unique code every 30 seconds. This adds a second layer of security to your Uiiverse account, so malicious users are less likely to break through.</p>
     <div class="select-content">
-      <div class="select-button">
-        <a href="/enable-2fa" class="black-button">Enable Two Factor Authentication</a>
-      </div>
+      <div class="select-button">';
+    if ($user.2fa_enabled == 0) {
+      echo '
+        <a href="/enable-2fa" class="black-button">Enable Two Factor Authentication</a>';
+    } else {
+        echo '<a href="/disable-2fa" class="black-button">Disable Two Factor Authentication</a>';
+    }
+    echo '</div>
     </div>
   </li>
 </ul>

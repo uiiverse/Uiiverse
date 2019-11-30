@@ -23,6 +23,7 @@
 - php-mysql
 - mod_php
 - mod_rewrite
+- [2FA PHP Library](https://github.com/RobThree/TwoFactorAuth)
 - [AltoRouter](https://github.com/dannyvankooten/AltoRouter)
 
 # Contributors
