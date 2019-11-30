@@ -49,7 +49,7 @@ if(empty($_SESSION['signed_in'])){
 				} else {
 					$ch = curl_init();
 					curl_setopt_array($ch, array(
-						CURLOPT_URL => 'https://ariankordi.net/seth/'. $_POST['face'],
+						CURLOPT_URL => 'https://ariankordi.pf2m.com/seth/'. $_POST['face'],
 						CURLOPT_HEADER => true,
 						CURLOPT_RETURNTRANSFER => true));
 					$response = curl_exec($ch);
