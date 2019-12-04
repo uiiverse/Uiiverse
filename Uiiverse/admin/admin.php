@@ -9,7 +9,7 @@ if (!empty($_SESSION['signed_in'])) {
 	$user_result = $get_user->get_result();
 	$user = $user_result->fetch_assoc();
 
-	if ($user['user_level'] > 0) {
+	if ($user['user_level'] > 4) {
 
 		if (isset($action)){
 			if ($action == 'test') {

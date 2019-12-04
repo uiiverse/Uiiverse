@@ -287,7 +287,7 @@ if (isset($_COOKIE['neon-color'])) {
             <ul>
                 <li id="global-menu-mymenu"<?= ($on_page == 1 ? ' class="selected"' : '') ?>>
                     <a href="/users/<?= $user['user_name'] ?>/">
-                        <span class="icon-container<?= ($user['user_level'] > 1 ? ' official-user' : '') ?>">
+                        <span class="icon-container<?= ($user['user_level'] > 4 ? ' official-user' : '') ?>">
                             <img src="<?= printFace($user['user_face'], 0) ?>" alt="User Page">
                         </span>
                         <span>User Page</span>
@@ -310,7 +310,7 @@ if (isset($_COOKIE['neon-color'])) {
                         <li><a href="/guide/" class="symbol my-menu-guide"><span>Uiiverse Rules</span></a></li>
                         <li><a href="/guide/faq" class="symbol my-menu-guide"><span>Frequently Asked Questions (FAQ)</span></a></li>
                         <li><a href="/titles/<?= $user['title_id'] ?>" class="symbol my-menu-info"><span>Uiiverse Announcements</span></a></li>
-                        <?= ($user['user_level'] > 0 ? '<li><a href="/admin_panel" class="symbol my-menu-miiverse-setting"><span>Admin Manager</span></a></li>' : '') ?>
+                        <?= ($user['user_level'] > 4 ? '<li><a href="/admin_panel" class="symbol my-menu-miiverse-setting"><span>Admin Manager</span></a></li>' : '') ?>
 			<li>
                             <form action="/logout" method="post" id="my-menu-logout" class="symbol">
                                 <input type="submit" value="Sign out">
@@ -358,7 +358,7 @@ function printPost($post, $reply_pre)
 {
     global $dbc;
 
-    echo '<a href="/users/'. $post['user_name'] .'/" class="icon-container'.($post['user_level'] > 1 ? ' official-user' : '').'"><img src="'. printFace($post['user_face'], $post['feeling_id']) .'"class="icon"></a>
+    echo '<a href="/users/'. $post['user_name'] .'/" class="icon-container'.($post['user_level'] > 4 ? ' official-user' : '').'"><img src="'. printFace($post['user_face'], $post['feeling_id']) .'"class="icon"></a>
         <p class="user-name"><a href="/users/'. $post['user_name'] .'/" '.(isset($post['name_color']) ? 'style="color: '. $post['name_color'] .'"' : '').'>'. htmlspecialchars($post['nickname'], ENT_QUOTES) .'</a></p>
         <p class="timestamp-container"><a class="timestamp" href="/posts/'.$post['id'].'">'.humanTiming(strtotime($post['date_time'])).'</a></p><div id="body">';
 
@@ -654,7 +654,7 @@ function printReply($reply)
     global $dbc;
 
     echo '
-    <a href="/users/'. $reply['user_name'] .'/" class="icon-container'. ($reply['user_level'] > 1 ? ' official-user' : '') .'">
+    <a href="/users/'. $reply['user_name'] .'/" class="icon-container'. ($reply['user_level'] > 4 ? ' official-user' : '') .'">
     <img src="'. printFace($reply['user_face'], $reply['feeling_id']) .'" class="icon"></a>
     <div class="body">
     <div class="header">
