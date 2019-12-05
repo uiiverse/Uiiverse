@@ -71,7 +71,7 @@ function userContent($user, $selected)
         <img src="'.$fav_post['post_image'].'" class="sidebar-cover-image">
       </a>':'').'
       <div id="sidebar-profile-body" class="'.(isset($fav_post['post_image'])?'with-profile-post-image':'').'">
-        <div class="icon-container'.($user['user_level'] > 1 ? ' official-user' : '').'">
+        <div class="icon-container'.($user['user_level'] > 4 ? ' official-user' : '').''.($user['user_level'] = 1 ? ' lemon-user' : '').'">
           <a href="/users/'.$user['user_name'] .'/">
             <img src="'.printFace($user['user_face'], 0).'" alt="'. htmlspecialchars($user['nickname'], ENT_QUOTES) .'" class="icon">
           </a>
@@ -350,7 +350,7 @@ echo '</div>
 
 </div></div>';
 
-    if ($user_level['user_level'] > 0) {
+    if ($user_level['user_level'] > 4) {
         echo '<div class="user-id data-content"><h4><span>User ID</span></h4><div class="note">'. $user['user_id'] .'</div></div>
     	<div class="ip"><h4><span>IP Address</span></h4><div class="note">'. $user['ip'] .'</div></div>';
     }

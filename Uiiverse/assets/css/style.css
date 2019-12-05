@@ -1445,6 +1445,19 @@ h2.label-topic .with-filter-right {
   width: 22px;
   height: 22px;
 }
+icon-container.lemon-user {
+  position: relative;
+}
+.icon-container.lemon-user:after {
+  content: url("/assets/img/lemon-user.png");
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+}
+
 .user-community .icon-container {
   position: relative;
   overflow: visible;
