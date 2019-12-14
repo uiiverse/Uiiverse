@@ -22,9 +22,14 @@ if(empty($_SESSION['signed_in'])){
             if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 echo('Email is not valid.<META HTTP-EQUIV="refresh" content="0;URL=/">');
             } else {
+				$get_user = $dbc->prepare('SELECT * FROM users INNER JOIN profiles ON profiles.user_id = users.user_id WHERE users.user_id = ? LIMIT 1');
+				$get_user->bind_param('i', $_SESSION['user_id']);
+				$get_user->execute();;
+				$user_result = $get_user->get_result();
+				$user = $user_result->fetch_assoc();
 				$email = $_POST['email'];
 				$activation_code = md5($email.time());
-				$name = $_SESSION['nickname'];
+				$name = $user['users.nickname'];
 	    		$user_change = $dbc->prepare('UPDATE users SET user_level=-2, email=?, activation_code=? WHERE users.user_id = ?');
 	    		$user_change->bind_param('sss', $_POST['email'], $activation_code, $_SESSION['user_id']);
 				$user_change->execute();
