@@ -52,7 +52,7 @@ if (isset($code)) {
                     $password_gen = password_hash($_POST['password'], PASSWORD_DEFAULT);
                     $user_change = $dbc->prepare('UPDATE users SET user_pass = ?, reset_code = "" WHERE users.user_id = ?');
                     $user_change->bind_param('ss', $password_gen, $user['user_id']);
-                    $user_change->execute()
+                    $user_change->execute();
                     $to = $email;
                     $subject = "Password has been changed";
                     $header = "From: no-reply@uiiverse.xyz \r\n";
