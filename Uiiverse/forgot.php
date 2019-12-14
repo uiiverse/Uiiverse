@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 
                 <div class="auth-input-double">               
                     <label>
-                        <input type="email" name="email" maxlength="16" title="Email" placeholder="Email">
+                        <input type="email" name="email" title="Email" placeholder="Email">
                     </label>
                 <input type="submit" name="submit" class="hb-btn hb-is-decide" style="margin-top: 4px;" id="btn_text" value="Submit">
             </form>
