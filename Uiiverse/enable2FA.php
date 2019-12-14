@@ -20,7 +20,7 @@ if(empty($_SESSION['signed_in'])){
 		$_SESSION['secret'] = $secret;
 		$tabTitle = 'Uiiverse - Enable Two Factor Authentication';
 		printHeader('');
-		echo '<div class="main-column"><div class="post-list-outline"><h2 class="label">Enable Two Factor Authentcation</h2><p>2FA helps you add a second layer of security to your Uiiverse account. You will have to download the Google Authenticator or Authy on your phone. Scan the next QR code:</p><img src='. $tfa->getQRCodeGoogleUrl($user['user_name'], $secret) .'><p>or use the following secret code: ' . $secret . '</p><form action="/enable-2fa" method="POST"><p>Enter the generated code.</p><input type="text" name="code"><input type="submit" class="black-button" value="Submit"></form>';
+		echo '<div class="main-column"><div class="post-list-outline"><h2 class="label">Enable Two Factor Authentcation</h2><ul class="settings-list"><p>2FA helps you add a second layer of security to your Uiiverse account. You will have to download the Google Authenticator or Authy on your phone. Scan the next QR code:</p><img src='. $tfa->getQRCodeGoogleUrl($user['user_name'], $secret) .'><p>or use the following secret code: ' . $secret . '</p><form action="/enable-2fa" method="POST"><p>Enter the generated code.</p><input type="text" name="code"><input type="submit" class="black-button" value="Submit"></form></ul>';
 	} else {
 			$result = $tfa->verifyCode($_SESSION['secret'], $_POST['code']);
 			if ($result == TRUE) {

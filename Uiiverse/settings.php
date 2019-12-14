@@ -220,7 +220,14 @@ Posting such information is against the Uiiverse Code of Conduct and may result 
         echo '<a href="/disable-2fa" class="black-button">Disable Two Factor Authentication</a>';
     }
     echo '</div>
-    </div>
+	</div>
+	<p class="settings-label">Change your email</p>
+    <p class="note">Changes your Uiiverse email.</p>
+    <div class="select-content">
+	  <div class="select-button">
+	  <a href="/change-email" class="black-button">Change Email</a>
+	</div>
+	</div>
   </li>
 </ul>
 <div class="form-buttons">
