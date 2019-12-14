@@ -22,6 +22,7 @@ if(empty($_SESSION['signed_in'])){
             if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 echo('Email is not valid.<META HTTP-EQUIV="refresh" content="0;URL=/">');
             } else {
+				$email = $_POST['email'];
 				$activation_code = md5($email.time());
 				$name = $user['nickname'];
 	    		$user_change = $dbc->prepare('UPDATE users SET user_level=-2, email=?, activation_code=? WHERE users.user_id = ?');
