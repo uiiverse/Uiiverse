@@ -49,6 +49,7 @@ if (isset($code)) {
                 } elseif (empty($_POST['confirm_password'])) {
                     echo('Password confirmation cannot be empty.');
                 } else {
+                    $email = $user['email']
                     $password_gen = password_hash($_POST['password'], PASSWORD_DEFAULT);
                     $user_change = $dbc->prepare('UPDATE users SET user_pass = ?, reset_code = "" WHERE users.user_id = ?');
                     $user_change->bind_param('ss', $password_gen, $user['user_id']);
