@@ -22,11 +22,6 @@ if(empty($_SESSION['signed_in'])){
             if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 echo('Email is not valid.<META HTTP-EQUIV="refresh" content="0;URL=/">');
             } else {
-				$get_user = $dbc->prepare('SELECT * FROM users INNER JOIN profiles ON profiles.user_id = users.user_id WHERE users.user_id = ? LIMIT 1');
-				$get_user->bind_param('i', $_SESSION['user_id']);
-				$get_user->execute();;
-				$user_result = $get_user->get_result();
-				$user = $user_result->fetch_assoc();
 				$email = $_POST['email'];
 				$activation_code = md5($email.time());
 				$name = $user['users.nickname'];
@@ -34,12 +29,12 @@ if(empty($_SESSION['signed_in'])){
 	    		$user_change->bind_param('sss', $_POST['email'], $activation_code, $_SESSION['user_id']);
 				$user_change->execute();
 				$to = $email;
-				$subject = "Activate your Uiiverse account, ". $name ."!";
+				$subject = "Activate your Uiiverse account!";
 				$header = "From: no-reply@uiiverse.xyz \r\n";
 				$header .= "MIME-Version: 1.0\r\n";
         		$header .= "Content-type: text/html\r\n";
 				$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='156' height='30'><br>
-				Hey ". $name ."!<br>
+				Hey!<br>
 				You have succesfully changed your email. Before you can use your account with your new email though, you need to activate it.<br>
 				To do so, just <a href='https://uiiverse.xyz/activate/". $activation_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/activate/". $activation_code ."<br>
 				<br>
