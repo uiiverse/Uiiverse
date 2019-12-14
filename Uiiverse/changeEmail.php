@@ -46,7 +46,8 @@ if(empty($_SESSION['signed_in'])){
 				<small>All emails sent by this address are automatically generated. Don't reply to any of these emails or email this address, since none of them are going to be replied to.</small>";
 				mail($to,$subject,$body,$header);
 	    		exit('Your email has been successfully changed. Redirecting to Uiiverse.<META HTTP-EQUIV="refresh" content="0;URL=/">');
-			} else {
+			} 
+		} else {
 				echo '<script type="text/javascript">alert("The code you entered in was invalid. Please try again.");</script><META HTTP-EQUIV="refresh" content="0;URL=/change-email">';
 			}
 		}
