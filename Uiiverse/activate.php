@@ -1,6 +1,6 @@
 <?
 require_once('lib/htm.php');
-if (!isset($code)) {
+if (isset($code)) {
     $find_user = $dbc->prepare('SELECT * FROM users WHERE activation_code = ? LIMIT 1');
     $find_user->bind_param('s', $code);
     $find_user->execute();
@@ -17,5 +17,7 @@ if (!isset($code)) {
         $activate_user->execute();
         echo('<META HTTP-EQUIV="refresh" content="0;URL=/">User has been sucessfully activated. Redirecting to Uiiverse...');
     }
+} else {
+    echo('You didn\'t enter an activation code. Please enter one before proceeding.');
 }
 ?>

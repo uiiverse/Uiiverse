@@ -56,7 +56,9 @@ $router->addRoutes(array(
 array('GET|POST', '/titles/[i:title_id]/topic', 'discussion-list.php', 'Open-discussions'),
 array('GET|POST', '/titles/[i:title_id]/artwork', 'drawing-list.php', 'Artwork'),
 array('GET|POST', '/titles/[i:title_id]/diary', 'diary-list.php', 'Community-diary'),
-array('GET|POST', '/forgot/', 'forgot.php', 'Forgot your Password?')
+array('GET|POST', '/forgot/', 'forgot.php', 'Forgot your Password?'),
+array('GET|POST', '/reset/[*:code]', 'reset.php', 'Reset-code')
+array('GET|POST', '/reset/', 'reset.php', 'Reset')
 ));
 // Match the current request
 $match = $router->match(urldecode($_SERVER['REQUEST_URI']));

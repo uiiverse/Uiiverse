@@ -26,7 +26,7 @@ if(empty($_SESSION['signed_in'])){
                         <input type="text" name="username" maxlength="16" title="Uiiverse ID" placeholder="User ID" value="">
                     </label>
 					<label>
-                        <input type="text" name="email" title="Email" placeholder="Email" value="">
+                        <input type="email" name="email" title="Email" placeholder="Email" value="">
                     </label>
                     <label>
                         <input type="password" name="password" maxlength="16" title="Password" placeholder="Password">
@@ -101,7 +101,7 @@ $forbidden = array("faggot", "nigga", "whore", "nigger", "fucker", "fuck", "fuck
     		$user_result = $search_user->get_result();
 
     		if ($user_result->num_rows > 0) {
-    			$errors[] = 'User ID already exists';
+    			$errors[] = 'User ID already exists.';
     		}
 
     		if ($_POST['password'] != $_POST['confirm_password']) {
@@ -113,8 +113,8 @@ $forbidden = array("faggot", "nigga", "whore", "nigger", "fucker", "fuck", "fuck
 			if (empty($_POST['email'])) {
 				$errors[] = 'Email cannot be empty.';
 			}
-			if (!filter_var($_POST['email'], FITLER_VALIDATE_EMAIL)) {
-				$errors[] = 'Email is not valid.';
+			if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+				$errors[] = 'Email is invalid.';
 			}
     		if (strlen($_POST['name']) > 16){
     			$errors[] = 'Name connot be longer than 16 characters.';
@@ -160,7 +160,7 @@ $forbidden = array("faggot", "nigga", "whore", "nigger", "fucker", "fuck", "fuck
 					
 					$to = $email;
 					$subject = "Activate your Uiiverse account, ". $name ."!";
-					$header = "From:no-reply@uiiverse.xyz \r\n";
+					$header = "From: no-reply@uiiverse.xyz \r\n";
 					$header .= "MIME-Version: 1.0\r\n";
         			$header .= "Content-type: text/html\r\n";
 					$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse'>
