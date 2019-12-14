@@ -24,7 +24,7 @@
 - php-mysql
 - mod_php
 - mod_rewrite
-- [PHPGangta's GoogleAuthenticator Lib](https://github.com/PHPGangsta/GoogleAuthenticator/)
+- [PHPGangsta's GoogleAuthenticator Lib](https://github.com/PHPGangsta/GoogleAuthenticator/)
 - [AltoRouter](https://github.com/dannyvankooten/AltoRouter)
 
 # Contributors
