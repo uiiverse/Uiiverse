@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
                     Hey ". $name ."!<br>
                     It seems you have requested a password reset.<br>
                     To reset your password, just <a href='https://uiiverse.xyz/reset/". $reset_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/reset/". $reset_code ."<br>
-                    If you didn't request a password request, you can safely ignore this email.<br>
+                    If you didn't request a password reset, you can safely ignore this email.<br>
                     <br>
                     Have a great day!<br>
                     <br>
