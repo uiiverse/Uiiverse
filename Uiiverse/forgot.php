@@ -54,8 +54,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
                 } else {
                     $email = $_POST['email'];
                     $reset_code = md5($email.time());
-                    $name = $user['nickname']
-
+                    $name = $user['nickname'];
                     $user_change = $dbc->prepare('UPDATE users SET reset_code = ? WHERE users.user_id = ?');
                     $user_change->bind_param('ss', $reset_code, $user['user_id']);
                     $user_change->execute();
