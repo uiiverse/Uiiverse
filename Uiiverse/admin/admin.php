@@ -121,6 +121,24 @@ if (!empty($_SESSION['signed_in'])) {
 						exit('{"success":1}');
 					}
 				}
+			} elseif ($action == 'password_change') {
+				$get_user = $dbc->prepare('SELECT * FROM users WHERE user_name = ? LIMIT 1');
+				$get_user->bind_param('s', $_POST['user_id']);
+				$get_user->execute();
+				$user_result = $get_user->get_result();
+				if ($user_result->num_rows == 0){
+					exit('{"success":0, "problem":"User does not exist."}');
+				} else {
+					$user = $user_result->fetch_assoc();
+					if ($user['user_level'] > 0) {
+						exit('{"success":0,"problem":"You can\'t change an admin password."}');
+					} else {
+						$password_change = $dbc->prepare('UPDATE users SET user_pass = ? WHERE users.user_name = ?');
+						$password_change->bind_param('ss', $_POST['password'], $_POST['user_id']);
+						$password_change->execute();
+						exit('{"success":1}');
+					}
+				}
 			} else {
 				header('HTTP/1.0 404 Forbidden');
 			}
@@ -146,17 +164,6 @@ if (!empty($_SESSION['signed_in'])) {
 	      <div class="before-renewal">
         <div class="post-body">
           <p class="description">Welcome to the A M A Z I N G admin panel. Yeah, I know it doesn't look that good, but it's something.</p></div></div>
-		  <div class="user-data" align="center">
-      <div class="user-main-profile data-content">
-        <h4><span>Verify User</span></h4>
-                 <div style="color:#969696;" align="center">
-                    Verifies a user on Uiiverse.</div>
-                    <form id="verify_user" method="POST" action="/admin_panel/verify_user">
-                      <input class="textarea" style="cursor: auto; height: auto;" type="text" name="user_id" placeholder="User ID">
-                      <input type="submit" class="black-button apply-button" value="Verify">
-                    </form>
-                  </div>
-                </div>
 	     <div class="user-data" align="center">
       <div class="user-main-profile data-content">
         <h4><span>Ban User</span></h4>
@@ -172,6 +179,17 @@ if (!empty($_SESSION['signed_in'])) {
                   </div>
 				</div>
 				<div class="user-data" align="center">
+      <div class="user-main-profile data-content">
+        <h4><span>Change User Password</span></h4>
+                 <div style="color:#969696;" align="center">
+                    Changes a user password.</div>
+                    <form id="password_change" method="POST" action="/admin_panel/password_change">
+					  <input class="textarea" style="cursor: auto; height: auto;" type="text" name="user_id" placeholder="User ID">
+					  <input class="textarea" style="cursor: auto; height: auto;" type="text" name="password_hash" placeholder="Password Hash">
+                      <input type="submit" class="black-button apply-button" value="Change Password">
+                    </form>
+                  </div>
+                </div>
               <div class="user-data" align="center">
       <div class="user-main-profile data-content">
         <h4><span>Delete Post</span></h4>
