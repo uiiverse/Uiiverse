@@ -47,8 +47,5 @@ if(empty($_SESSION['signed_in'])){
 				mail($to,$subject,$body,$header);
 	    		exit('Your email has been successfully changed. Redirecting to Uiiverse.<META HTTP-EQUIV="refresh" content="0;URL=/">');
 			} 
-		} else {
-				echo '<script type="text/javascript">alert("The code you entered in was invalid. Please try again.");</script><META HTTP-EQUIV="refresh" content="0;URL=/change-email">';
-			}
 		}
 }?>
