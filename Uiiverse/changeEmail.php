@@ -24,8 +24,8 @@ if(empty($_SESSION['signed_in'])){
             } else {
 				$activation_code = md5($email.time());
 				$name = $user['nickname'];
-	    		$user_change = $dbc->prepare('UPDATE users SET user_level=-2 email=? activation_code=? WHERE users.user_id = ?');
-	    		$user_change->bind_param('sss', $_POST['email'], $activation_code, $user['user_id']);
+	    		$user_change = $dbc->prepare('UPDATE users SET user_level=-2, email=?, activation_code=? WHERE users.user_id = ?');
+	    		$user_change->bind_param('sss', $_POST['email'], $activation_code, $_SESSION['user_id']);
 				$user_change->execute();
 				$to = $email;
 				$subject = "Activate your Uiiverse account, ". $name ."!";
