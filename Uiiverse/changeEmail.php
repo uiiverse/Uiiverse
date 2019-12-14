@@ -33,7 +33,7 @@ if(empty($_SESSION['signed_in'])){
 				$header = "From: no-reply@uiiverse.xyz \r\n";
 				$header .= "MIME-Version: 1.0\r\n";
         		$header .= "Content-type: text/html\r\n";
-				$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='156' height='30'><br>
+				$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='165' height='30'><br>
 				Hey!<br>
 				You have succesfully changed your email. Before you can use your account with your new email though, you need to activate it.<br>
 				To do so, just <a href='https://uiiverse.xyz/activate/". $activation_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/activate/". $activation_code ."<br>

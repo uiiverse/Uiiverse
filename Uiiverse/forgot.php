@@ -64,7 +64,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
                     $header = "From: no-reply@uiiverse.xyz \r\n";
                     $header .= "MIME-Version: 1.0\r\n";
                     $header .= "Content-type: text/html\r\n";
-                    $body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='156' height='30'><br>
+                    $body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='165' height='30'><br>
                     Hey ". $name ."!<br>
                     It seems you have requested a password reset.<br>
                     To reset your password, just <a href='https://uiiverse.xyz/reset/". $reset_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/reset/". $reset_code ."<br>
