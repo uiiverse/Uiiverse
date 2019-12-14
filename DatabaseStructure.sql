@@ -222,7 +222,9 @@ CREATE TABLE `users` (
   `ip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `user_level` int(1) NOT NULL DEFAULT 0,
   `2fa_enabled` int(1) NOT NULL DEFAULT 0,
-  `2fa_secret` varchar(80) DEFAULT NULL
+  `2fa_secret` varchar(80) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `activation_code` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

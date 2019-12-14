@@ -127,7 +127,7 @@ $forbidden = array("faggot", "nigga", "whore", "nigger", "fucker", "fuck", "fuck
 
     			$password_gen = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    			$new_user = $dbc->prepare('INSERT INTO users (user_name, user_pass, nickname, user_face, date_created, ip, user_level) VALUES (?,?,?,?,NOW(),?,0)');
+    			$new_user = $dbc->prepare('INSERT INTO users (user_name, user_pass, nickname, user_face, date_created, ip, user_level) VALUES (?,?,?,?,NOW(),?,-2)');
     			$new_user->bind_param('sssss', $username, $password_gen, $name, $face, $_SERVER['REMOTE_ADDR']);
     			$new_user->execute();
 

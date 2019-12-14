@@ -25,6 +25,7 @@ $router->addRoutes(array(
     array('GET|POST', '/settings/theme', 'theme_settings.php', 'Theme-settings'),
     array('GET|POST', '/admin_panel', 'admin/admin.php', 'Admin'),
     array('GET|POST', '/admin_panel/[*:action]', 'admin/admin.php', 'Admin-option'),
+    array('GET|POST', '/activate/[*:code]', 'activate.php', 'Activate'),
     array('GET', '/users/[*:action]/posts', 'users.php', 'Users'),
     array('GET', '/users/[*:action]/yeahs', 'userYeahs.php', 'User-yeahs'),
     array('GET', '/users/[*:action]/', 'userDiary.php', 'User-profile'),

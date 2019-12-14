@@ -103,6 +103,24 @@ if (!empty($_SESSION['signed_in'])) {
 					$delete_reply->execute();
 					exit('{"success":1}');
 				}
+			} elseif ($action == 'verify_user') {
+				$get_user = $dbc->prepare('SELECT * FROM users WHERE user_name = ? LIMIT 1');
+				$get_user->bind_param('s', $_POST['user_id']);
+				$get_user->execute();
+				$user_result = $get_user->get_result();
+				if ($user_result->num_rows == 0){
+					exit('{"success":0, "problem":"User does not exist."}');
+				} else {
+					$user = $user_result->fetch_assoc();
+					if ($user['user_level'] >= 0) {
+						exit('{"success":0,"problem":"You can\'t verify a verified user."}');
+					} else {
+						$verify_user = $dbc->prepare('UPDATE users SET user_level = 0 WHERE users.user_name = ?');
+						$verify_user->bind_param('s', $_POST['user_id']);
+						$verify_user->execute();
+						exit('{"success":1}');
+					}
+			    } 
 			} elseif ($action == 'ban_user') {
 				$get_user = $dbc->prepare('SELECT * FROM users WHERE user_name = ? LIMIT 1');
 				$get_user->bind_param('s', $_POST['user_id']);
@@ -118,6 +136,24 @@ if (!empty($_SESSION['signed_in'])) {
 						$ban_user = $dbc->prepare('UPDATE users SET user_level = -1 WHERE users.user_name = ?');
 						$ban_user->bind_param('s', $_POST['user_id']);
 						$ban_user->execute();
+						exit('{"success":1}');
+					}
+				}
+			} elseif ($action == 'password_change') {
+				$get_user = $dbc->prepare('SELECT * FROM users WHERE user_name = ? LIMIT 1');
+				$get_user->bind_param('s', $_POST['user_id']);
+				$get_user->execute();
+				$user_result = $get_user->get_result();
+				if ($user_result->num_rows == 0){
+					exit('{"success":0, "problem":"User does not exist."}');
+				} else {
+					$user = $user_result->fetch_assoc();
+					if ($user['user_level'] > 0) {
+						exit('{"success":0,"problem":"You can\'t change an admin password."}');
+					} else {
+						$password_change = $dbc->prepare('UPDATE users SET user_pass = ? WHERE users.user_name = ?');
+						$password_change->bind_param('ss', $_POST['password'], $_POST['user_id']);
+						$password_change->execute();
 						exit('{"success":1}');
 					}
 				}
@@ -172,6 +208,17 @@ if (!empty($_SESSION['signed_in'])) {
                   </div>
 				</div>
 				<div class="user-data" align="center">
+      <div class="user-main-profile data-content">
+        <h4><span>Change User Password</span></h4>
+                 <div style="color:#969696;" align="center">
+                    Changes a user password.</div>
+                    <form id="password_change" method="POST" action="/admin_panel/password_change">
+					  <input class="textarea" style="cursor: auto; height: auto;" type="text" name="user_id" placeholder="User ID">
+					  <input class="textarea" style="cursor: auto; height: auto;" type="text" name="password_hash" placeholder="Password Hash">
+                      <input type="submit" class="black-button apply-button" value="Change Password">
+                    </form>
+                  </div>
+                </div>
               <div class="user-data" align="center">
       <div class="user-main-profile data-content">
         <h4><span>Delete Post</span></h4>
