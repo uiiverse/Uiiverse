@@ -10,8 +10,9 @@
 
 # Features
 
-- Themes
-- Verification system.
+- Themes.
+- Verification system. (Both email and manual)
+- Two factor authentication.
 - Password resetting.
 - Working admin panel.
 
