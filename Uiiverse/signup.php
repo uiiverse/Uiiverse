@@ -163,7 +163,7 @@ $forbidden = array("faggot", "nigga", "whore", "nigger", "fucker", "fuck", "fuck
 					$header = "From: no-reply@uiiverse.xyz \r\n";
 					$header .= "MIME-Version: 1.0\r\n";
         			$header .= "Content-type: text/html\r\n";
-					$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='165' height='30'><br>
+					$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='165' height='35'><br>
 					Hey ". $name ."!<br>
 					It seems you have recently created an account for Uiiverse. Before using your account though, you need to activate it.<br>
 					To do so, just <a href='https://uiiverse.xyz/activate/". $activation_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/activate/". $activation_code ."<br>

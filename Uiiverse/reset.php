@@ -60,7 +60,7 @@ if (isset($code)) {
                     $header = "From: no-reply@uiiverse.xyz \r\n";
                     $header .= "MIME-Version: 1.0\r\n";
                     $header .= "Content-type: text/html\r\n";
-                    $body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='165' height='30'><br>
+                    $body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='165' height='35'><br>
                     Hey ". $name ."!<br>
                     We're sending you this email to notify you that your password has been changed.<br>
                     If you didn't change your password, please email contact@uiiverse.xyz instantly or DM our moderators so we can give you access back into your account.<br>
