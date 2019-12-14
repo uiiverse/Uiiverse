@@ -32,17 +32,17 @@ if(empty($_SESSION['signed_in'])){
 				$header = "From: no-reply@uiiverse.xyz \r\n";
 				$header .= "MIME-Version: 1.0\r\n";
         		$header .= "Content-type: text/html\r\n";
-				$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse'>
-				Hey ". $name ."!
-				You have succesfully changed your email. Before you can use your account with your new email though, you need to activate it.
-				To do so, just <a href='https://uiiverse.xyz/activate/". $activation_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/activate/". $activation_code ."
-				
-				Have a great day!
-
-				The Uiiverse Team
-				https://uiiverse.xyz/
-				contact@uiiverse.xyz
-					
+				$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse'><br>
+				Hey ". $name ."!<br>
+				You have succesfully changed your email. Before you can use your account with your new email though, you need to activate it.<br>
+				To do so, just <a href='https://uiiverse.xyz/activate/". $activation_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/activate/". $activation_code ."<br>
+				<br>
+				Have a great day!<br>
+				<br>
+				The Uiiverse Team<br>
+				https://uiiverse.xyz/<br>
+				contact@uiiverse.xyz<br>
+				<br>
 				<small>All emails sent by this address are automatically generated. Don't reply to any of these emails or email this address, since none of them are going to be replied to.</small>";
 				mail($to,$subject,$body,$header);
 	    		exit('Your email has been successfully changed. Redirecting to Uiiverse.<META HTTP-EQUIV="refresh" content="0;URL=/">');

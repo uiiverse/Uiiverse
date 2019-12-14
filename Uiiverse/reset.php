@@ -58,17 +58,17 @@ if (isset($code)) {
                     $header = "From: no-reply@uiiverse.xyz \r\n";
                     $header .= "MIME-Version: 1.0\r\n";
                     $header .= "Content-type: text/html\r\n";
-                    $body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse'>
-                    Hey ". $name ."!
-                    We're sending you this email to notify you that your password has been changed.
-                    If you didn't change your password, please email contact@uiiverse.xyz instantly or DM our moderators so we can give you access back into your account.
-
-                    Have a great day!
-
-                    The Uiiverse Team
-                    https://uiiverse.xyz/
-                    contact@uiiverse.xyz
-                        
+                    $body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse'><br>
+                    Hey ". $name ."!<br>
+                    We're sending you this email to notify you that your password has been changed.<br>
+                    If you didn't change your password, please email contact@uiiverse.xyz instantly or DM our moderators so we can give you access back into your account.<br>
+                    <br>
+                    Have a great day!<br>
+                    <br>
+                    The Uiiverse Team<br>
+                    https://uiiverse.xyz/<br>
+                    contact@uiiverse.xyz<br>
+                    <br>
                     <small>All emails sent by this address are automatically generated. Don't reply to any of these emails or email this address, since none of them are going to be replied to.</small>";
                     mail($to,$subject,$body,$header);
                     echo('Your password has been successfully reset! You can try to login now.');

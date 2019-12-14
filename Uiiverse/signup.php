@@ -163,17 +163,17 @@ $forbidden = array("faggot", "nigga", "whore", "nigger", "fucker", "fuck", "fuck
 					$header = "From: no-reply@uiiverse.xyz \r\n";
 					$header .= "MIME-Version: 1.0\r\n";
         			$header .= "Content-type: text/html\r\n";
-					$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse'>
-					Hey ". $name ."!
-					It seems you have recently created an account for Uiiverse. Before using your account though, you need to activate it.
-					To do so, just <a href='https://uiiverse.xyz/activate/". $activation_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/activate/". $activation_code ."
-					
-					Have a great day!
-
-					The Uiiverse Team
-					https://uiiverse.xyz/
-					contact@uiiverse.xyz
-					
+					$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse'><br>
+					Hey ". $name ."!<br>
+					It seems you have recently created an account for Uiiverse. Before using your account though, you need to activate it.<br>
+					To do so, just <a href='https://uiiverse.xyz/activate/". $activation_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/activate/". $activation_code ."<br>
+					<br>
+					Have a great day!<br>
+					<br>
+					The Uiiverse Team<br>
+					https://uiiverse.xyz/<br>
+					contact@uiiverse.xyz<br>
+					<br>
 					<small>All emails sent by this address are automatically generated. Don't reply to any of these emails or email this address, since none of them are going to be replied to.</small>";
 					mail($to,$subject,$body,$header);
 					$_SESSION['signed_in'] = true;

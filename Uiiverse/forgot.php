@@ -64,18 +64,18 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
                     $header = "From: no-reply@uiiverse.xyz \r\n";
                     $header .= "MIME-Version: 1.0\r\n";
                     $header .= "Content-type: text/html\r\n";
-                    $body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse'>
-                    Hey ". $name ."!
-                    It seems you have requested a password reset.
-                    To reset your password, just <a href='https://uiiverse.xyz/forgot/". $reset_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/forgot/". $reset_code ."
-                    If you didn't request a password request, you can safely ignore this email.
-                    
-                    Have a great day!
-
-                    The Uiiverse Team
-                    https://uiiverse.xyz/
-                    contact@uiiverse.xyz
-                        
+                    $body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse'><br>
+                    Hey ". $name ."!<br>
+                    It seems you have requested a password reset.<br>
+                    To reset your password, just <a href='https://uiiverse.xyz/forgot/". $reset_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/forgot/". $reset_code ."<br>
+                    If you didn't request a password request, you can safely ignore this email.<br>
+                    <br>
+                    Have a great day!<br>
+                    <br>
+                    The Uiiverse Team<br>
+                    https://uiiverse.xyz/<br>
+                    contact@uiiverse.xyz<br>
+                    <br>
                     <small>All emails sent by this address are automatically generated. Don't reply to any of these emails or email this address, since none of them are going to be replied to.</small>";
                     mail($to,$subject,$body,$header);
                     echo '<center><br><br><br><br><br><p>An email has been sent to your email address. Please check your inbox or your spam folder.</center>';
