@@ -24,7 +24,7 @@ if(empty($_SESSION['signed_in'])){
             } else {
 				$email = $_POST['email'];
 				$activation_code = md5($email.time());
-				$name = $user['nickname'];
+				$name = $_SESSION['nickname'];
 	    		$user_change = $dbc->prepare('UPDATE users SET user_level=-2, email=?, activation_code=? WHERE users.user_id = ?');
 	    		$user_change->bind_param('sss', $_POST['email'], $activation_code, $_SESSION['user_id']);
 				$user_change->execute();
