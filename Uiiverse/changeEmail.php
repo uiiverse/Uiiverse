@@ -23,7 +23,7 @@ if(empty($_SESSION['signed_in'])){
                 echo('Email is not valid.<META HTTP-EQUIV="refresh" content="0;URL=/">');
             } else {
 				$activation_code = md5($email.time());
-				$name = $user['nickname']
+				$name = $user['nickname'];
 	    		$user_change = $dbc->prepare('UPDATE users SET user_level=-2 email=? activation_code=? WHERE users.user_id = ?');
 	    		$user_change->bind_param('sss', $_POST['email'], $activation_code, $user['user_id']);
 				$user_change->execute();

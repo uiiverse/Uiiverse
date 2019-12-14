@@ -28,7 +28,6 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
         </div>
 
     <?php
-        }
     } else {
     	if (isset($_POST['submit'])) {
             
