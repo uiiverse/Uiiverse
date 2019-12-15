@@ -1,43 +1,43 @@
-[![# Uiiverse](https://i.ibb.co/dMPvqk9/logo.png)](https://uiiverse.xyz/)
+[![# Uiiverse](https://i.ibb.co/dMPvqk9/logo.png)](https://es.uiiverse.xyz/)
 
-**A Pearl-based Miiverse clone with many themes.**
+**Un clon de Miiverse basado en Pearl con varios temas**
 
-[Official website](https://uiiverse.xyz/)
+[Página web oficial](https://es.uiiverse.xyz/)
 
-[Documentation](https://uiiverse.readthedocs.io/en/latest/)
+[Documentación](https://uiiverse.readthedocs.io/en/latest/)
 
-[Discord server](https://discord.gg/7ZE4dp5)
+[Servidor de Discord](https://discord.gg/7ZE4dp5)
 
-# Features
+# Funciones
 
-- Themes.
-- Verification system. (Both email and manual)
-- Two factor authentication.
-- Password resetting.
-- Working admin panel.
+- Temas.
+- Sistema de verificación. (Por email o manual)
+- Autenticación de dos factores.
+- Reestablecimiento de contraseñas.
+- Panel de administración funcional.
 
-# Dependencies
+# Dependencias
 
-- [Apache2 HTTP Server](https://httpd.apache.org/)
+- [Servidor HTTP Apache2](https://httpd.apache.org/)
 - [PHP 7.2+](https://www.php.net/downloads.php)
 - [MySQL](https://www.mysql.com/) / [MariaDB](https://mariadb.com/)
 - php-mysql
 - mod_php
 - mod_rewrite
-- [PHPGangsta's GoogleAuthenticator Lib](https://github.com/PHPGangsta/GoogleAuthenticator/)
+- [Librería GoogleAuthenticator de PHPGangsta](https://github.com/PHPGangsta/GoogleAuthenticator/)
 - [AltoRouter](https://github.com/dannyvankooten/AltoRouter)
 
-# Contributors
+# Contribuidores
 
 - [Robert](https://gitlab.com/benatpearl) (Pearl)
 - [EnergeticBark](https://github.com/EnergeticBark/) ([Cedar](https://github.com/EnergeticBark/Cedar-PHP))
-- [joo](https://github.com/j0w0) (Neon, Stripe and Retro)
+- [joo](https://github.com/j0w0) (Neon, Rayado y Retro)
 
-# Thanks to
+# Agradecimientos
 
-- Robert (again) for letting me use most of his code
-- Seth for doing Cedar
-- joo for themes and JS
-- The Uiiverse Team for helping me do this
-- Everyone at Uiiverse for supporting the project
-- You for checking this out
+- Robert (de nuevo) por dejarme usar la mayor parte de su código
+- Seth por crear Cedar
+- joo por crear temas y scripts de JavaScript
+- El equipo Uiiverse por ayudarme a hacer esto
+- Todos en Uiiverse por apoyar el proyecto
+- Usted por ver esto
