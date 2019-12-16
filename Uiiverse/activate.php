@@ -8,16 +8,16 @@ if (isset($code)) {
     $user = $user_result->fetch_assoc();
 
     if ($user_result->num_rows == 0) {
-        echo('The code you entered is invalid. Please try again with another code.');
+        echo('El código que ha ingresado es inválido. Por favor inténtelo de nuevo con otro código.');
     } elseif ($user['user_level'] !== -2) {
-        echo('User doesn\'t need activation.');
+        echo('El usuario no necesita activación.');
     } else {
         $activate_user = $dbc->prepare('UPDATE users SET user_level=0 WHERE user_id = ?');
         $activate_user->bind_param('s', $user['user_id']);
         $activate_user->execute();
-        echo('<META HTTP-EQUIV="refresh" content="0;URL=/">User has been sucessfully activated. Redirecting to Uiiverse...');
+        echo('<META HTTP-EQUIV="refresh" content="0;URL=/">El usuario ha sido exitosamente activado. Redirigiendo a Uiiverse...');
     }
 } else {
-    echo('You didn\'t enter an activation code. Please enter one before proceeding.');
+    echo('No ingresó un código de activación. Por favor ingrese uno antes de proceder.');
 }
 ?>

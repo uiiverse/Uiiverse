@@ -13,7 +13,7 @@ if (isset($_COOKIE['retro-mode'])) {
 	$get_posts->execute();
 	$posts_result = $get_posts->get_result();
 } else {
-	$tabTitle = 'Uiiverse - Activity Feed';
+	$tabTitle = 'Uiiverse - Actividad';
 
 	printHeader(2);
 
@@ -32,9 +32,9 @@ if (isset($_COOKIE['retro-mode'])) {
 	sidebarSetting();
 	echo '</div>'; 
 
-	echo '<div class="main-column"><div class="headline"><h2 class="headline-text"><span class="symbol activity-headline">Activity Feed</span></h2><form class="search" action="/users" method="GET"><!--
-	--><input type="text" name="query" title="Search Users" placeholder="Search Users" minlength="1" maxlength="16"><!--
-	--><input type="submit" value="q" title="Search">
+	echo '<div class="main-column"><div class="headline"><h2 class="headline-text"><span class="symbol activity-headline">Actividad</span></h2><form class="search" action="/users" method="GET"><!--
+	--><input type="text" name="query" title="Buscar Usuarios" placeholder="Buscar Usuarios" minlength="1" maxlength="16"><!--
+	--><input type="submit" value="q" title="Buscar">
 	</form></div><div id="js-main">';
 
 	$get_posts = $dbc->prepare('SELECT posts.*, users.*, titles.* FROM posts INNER JOIN users ON user_id = post_by_id INNER JOIN titles ON title_id = post_title WHERE deleted = 0 AND (post_by_id IN (SELECT follow_to FROM follows WHERE follow_by = ?) OR post_by_id = ?) ORDER BY posts.date_time DESC LIMIT 20');
@@ -48,18 +48,18 @@ if (isset($_COOKIE['retro-mode'])) {
 		$verf_user_result = $get_verf_user->get_result();
 		$verf_user = $verf_user_result->fetch_assoc();
 
-		echo '<div id="activity-feed-tutorial"><p class="tleft">In your activity feed, you can view posts from your friends and from people you\'re following. To get started, why not follow some people whose posts interest you? You can also search for friends using Search Users in the upper right.<br></p>
+		echo '<div id="activity-feed-tutorial"><p class="tleft">En tu actividad, puedes ver publicaciones de tus amigos o de gente que estás siguiendo. Para empezar, ¿Por qué nos sigues a gente con publicaciones de tu mismo interés? Puedes igualmente buscar a tus amigos usando "Buscar Usuarios" en la esquina superior derecha.<br></p>
 		<img src="/assets/img/tutorial/tutorial-activity-feed.png" class="tutorial-image">
-		<h3>Latest Updates from Verified Users</h3>
+		<h3>Últimas Publicaciones por Usuarios Verificados</h3>
 		<ul class="list list-content-with-icon-and-text arrow-list follow-list">
 		<li class="trigger" data-href="/users/'.$verf_user['user_name'].'/posts">
 		<a href="/users/'.$verf_user['user_name'].'/posts" class="icon-container official-user"><img src="'.printFace($verf_user['user_face'], 0).'" class="icon"></a>
 		<div class="toggle-button"><button type="button" data-user-id="'.$verf_user['user_id'].'" class="follow-button button symbol relationship-button" data-community-id="" data-url-id="" data-track-label="user" data-title-id="" data-track-action="follow" data-track-category="follow">Follow</button>
-		<button type="button" class="button follow-done-button relationship-button symbol none" disabled="">Follow</button></div>
+		<button type="button" class="button follow-done-button relationship-button symbol none" disabled="">Seguir</button></div>
 		<div class="body">
 		<p class="title"><span class="nick-name"><a href="/users/'.$verf_user['user_name'].'/posts">'. htmlspecialchars($verf_user['nickname'], ENT_QUOTES) .'</a></span><span class="id-name">'.$verf_user['user_name'].'</span></p><p class="text">'.$verf_user['bio'].'</p></div></li></ul></div>
 		<div id="activity-feed-tutorial" class="no-content">
-		<p>There are no posts to display.</p>
+		<p>No hay publicaciones para mostrar</p>
 		</div>';
 
 	} else {
@@ -75,6 +75,6 @@ while ($post = $posts_result->fetch_assoc()) {
 
 	printPost($post, 0);
 
-	echo '</div><a href="/users/'.$post['user_name'].'/posts" class="another-posts symbol">'. htmlspecialchars($post['nickname'], ENT_QUOTES) .'\'s Posts</a></div>';
+	echo '</div><a href="/users/'.$post['user_name'].'/posts" class="another-posts symbol">Publicaciones de '. htmlspecialchars($post['nickname'], ENT_QUOTES) .'</a></div>';
 }
 }

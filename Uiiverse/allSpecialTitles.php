@@ -2,7 +2,7 @@
 require_once('lib/htm.php');
 require_once('lib/htmUsers.php');
 
-$tabTitle = 'Uiiverse - Community List (Special Communities)';
+$tabTitle = 'Uiiverse - Lista de Comunidades (Comunidades Especiales)';
 
 printHeader(3);
 
@@ -24,7 +24,7 @@ echo '
 <div class="main-column">
   <div class="post-list-outline">
     <div class="body-content" id="community-top" data-region="USA">
-      <h2 class="label">Special Communities</h2>
+      <h2 class="label">Comunidades Especiales</h2>
       
       <ul class="list community-list">';
 

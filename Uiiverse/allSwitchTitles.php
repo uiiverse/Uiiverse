@@ -2,7 +2,7 @@
 require_once('lib/htm.php');
 require_once('lib/htmUsers.php');
 
-$tabTitle = 'Uiiverse - Community List (Switch Communities)';
+$tabTitle = 'Uiiverse - Lista de Comunidades (Comunidades de Switch)';
 
 printHeader(3);
 
@@ -24,8 +24,8 @@ echo '
 <div class="main-column">
   <div class="post-list-outline">
     <div class="body-content" id="community-top" data-region="USA">
-      <h2 class="label">Communities<img class="platform-logo" src="https://www.logolynx.com/images/logolynx/6e/6e94a96f1809d2daec0c11c79e35c7a3.png" width="94" hight="17"></h2>
-      <h3 class="label label-switch">All Software</h3>
+      <h2 class="label">Comunidades<img class="platform-logo" src="https://www.logolynx.com/images/logolynx/6e/6e94a96f1809d2daec0c11c79e35c7a3.png" width="94" hight="17"></h2>
+      <h3 class="label label-switch">Todo el Software</h3>
       <ul class="list community-list">';
 
 $get_titles = $dbc->prepare('SELECT * FROM titles WHERE type = 4');

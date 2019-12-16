@@ -2,7 +2,7 @@
 require_once('lib/htm.php');
 require_once('lib/htmUsers.php');
 
-$tabTitle = 'Uiiverse - Notifications';
+$tabTitle = 'Uiiverse - Notificaciones';
 
 printHeader(4);
 
@@ -15,7 +15,7 @@ $user = $user_result->fetch_assoc();
 echo '<div id="sidebar" class="general-sidebar">';
 userContent($user, "");
 sidebarSetting();
-echo '</div><div class="main-column"><div class="post-list-outline"><h2 class="label">Messages Exchanged with Uiiverse Administration</h2><div class="list admin-messages">';
+echo '</div><div class="main-column"><div class="post-list-outline"><h2 class="label">Mensajes interambiados con la administración de Uiiverse</h2><div class="list admin-messages">';
 
 $get_admin_messages = $dbc->prepare('SELECT * FROM admin_messages WHERE admin_to = ? ORDER BY admin_date DESC LIMIT 50');
 $get_admin_messages->bind_param('i', $_SESSION['user_id']);
@@ -35,17 +35,17 @@ while($admin_message = $admin_messages_result->fetch_array()){
           echo $admin_message['admin_text'];
           break;
         case 1:
-          echo 'Your '.($admin_message['is_reply'] == 0 ? 'post' : 'reply').' was identified as spam, so it was removed. Continued violations may result in restrictions on your use of Uiiverse.';
+          echo 'Su '.($admin_message['is_reply'] == 0 ? 'publicación' : 'respuesta').' fué identificada como spam, por lo que fué eliminada. Violaciones continuas pueden resultar en restricciones de su uso de Uiiverse.';
           break;
         case 2:
-          echo 'Your '.($admin_message['is_reply'] == 0 ? 'post' : 'reply').' contained sexually explicit content, so it was removed. Continued violations may result in restrictions on your use of Uiiverse.';
+          echo 'Su '.($admin_message['is_reply'] == 0 ? 'publicación' : 'respuesta').' contenía contenido sexualmente explícito, por lo que fué eliminada. Violaciones continuas pueden resultar en restricciones de su uso de Uiiverse.';
           break;
         }
 
 
           echo '</p>
           <div id="post-meta">
-            <a href="/'.($admin_message['is_reply'] == 0 ? 'posts' : 'replies').'/'.$admin_message['admin_post'].'">View '.($admin_message['is_reply'] == 0 ? 'Post' : 'Reply').'</a>
+            <a href="/'.($admin_message['is_reply'] == 0 ? 'posts' : 'replies').'/'.$admin_message['admin_post'].'">Ver '.($admin_message['is_reply'] == 0 ? 'Publicación' : 'Respuesta').'</a>
           </div>
           
         </div>

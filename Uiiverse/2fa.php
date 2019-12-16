@@ -12,10 +12,10 @@ if(empty($_SESSION['signed_in'])){
             <meta name="viewport" content="width=device-width,minimum-scale=1, maximum-scale=1">
             <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
 
-            <title>Two Factor Authentication</title>
+            <title>Autenticación de dos factores</title>
             <div class="hb-contents-wrapper"><div class="hb-container hb-l-inside">
-                <h2>Two Factor Authentication</h2>
-                <p>Enter the code on your authentication app.</p>
+                <h2>Autenticación de dos factores</h2>
+                <p>Ingrese el código en su aplicación de autenticación.</p>
             </div>
 
             <form method="post" enctype="multipart/form-data">
@@ -23,9 +23,9 @@ if(empty($_SESSION['signed_in'])){
 
                     <div class="auth-input-double">
                         <label>
-                            <input type="text" name="code" maxlength="6" title="2FA Code" placeholder="2FA Code">
+                            <input type="text" name="code" maxlength="6" title="Código A2F" placeholder="Código A2F">
                         </label>
-                    <input type="submit" name="submit" class="hb-btn hb-is-decide" style="margin-top: 4px;" id="btn_text" value="Submit">
+                    <input type="submit" name="submit" class="hb-btn hb-is-decide" style="margin-top: 4px;" id="btn_text" value="Enviar">
                 </form>
             </div>
 
@@ -43,11 +43,11 @@ if(empty($_SESSION['signed_in'])){
                 $tfaresult = $tfa->verifyCode($user['2fa_secret'], $_POST['code']);
 
                 if ($tfaresult == FALSE) {
-                    $errors[] = "The auth code didn't match. Please try again.";
+                    $errors[] = "El código es incorrecto. Por favor inténtelo nuevamente.";
                 }
 
                 if (empty($errors)) {
-                    echo '<div id="main-body">Redirecting to Uiiverse...';
+                    echo '<div id="main-body">Redirigiendo a Uiiverse...';
                     $_SESSION['signed_in'] = true;
                     $update_ip = $dbc->prepare('UPDATE users SET ip = ? WHERE user_id = ?');
                     $update_ip->bind_param('si', $_SERVER['HTTP_CF_CONNECTING_IP'], $_SESSION['user_id']);

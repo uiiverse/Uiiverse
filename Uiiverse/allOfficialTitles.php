@@ -2,7 +2,7 @@
 require_once('lib/htm.php');
 require_once('lib/htmUsers.php');
 
-$tabTitle = 'Uiiverse - Community List (All Communities)';
+$tabTitle = 'Uiiverse - Lista de Comunidades (Todas las Comunidades)';
 
 printHeader(3);
 
@@ -24,8 +24,7 @@ echo '
 <div class="main-column">
   <div class="post-list-outline">
     <div class="body-content" id="community-top" data-region="USA">
-      <h2 class="label">Wii U/3DS Communities<img class="platform-logo" src="http://web.archive.org/web/20160308014635im_/https://d13ph7xrk1ee39.cloudfront.net/img/wiiu-logo.png?27pV7WfzFh-MAl8xrlmNAg" width="94" hight="17"><img class="platform-logo" src="http://web.archive.org/web/20160307233619im_/https://d13ph7xrk1ee39.cloudfront.net/img/3ds-logo.png?rAKZLSs8ENHaZWaZpKKv6w" width="94" hight="17"></h2>
-      
+      <h2 class="label">Comunidades de Wii U/3DS<img class="platform-logo" src="http://web.archive.org/web/20160308014635im_/https://d13ph7xrk1ee39.cloudfront.net/img/wiiu-logo.png?27pV7WfzFh-MAl8xrlmNAg" width="94" hight="17"><img class="platform-logo" src="http://web.archive.org/web/20160307233619im_/https://d13ph7xrk1ee39.cloudfront.net/img/3ds-logo.png?rAKZLSs8ENHaZWaZpKKv6w" width="94" hight="17"></h2>
       <ul class="list community-list">';
 
 $get_titles = $dbc->prepare('SELECT * FROM titles WHERE type = 3');

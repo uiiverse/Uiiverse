@@ -5,7 +5,7 @@ require_once('lib/htmUsers.php');
 function hexToHsl($color, $returnAsArray=false){$color=str_replace('#', '', $color);$R=hexdec($color[0].$color[1]);$G=hexdec($color[2].$color[3]);$B=hexdec($color[4].$color[5]);$HSL=array();$var_R=($R/255);$var_G=($G/255);$var_B=($B/255);$var_Min=min($var_R, $var_G, $var_B);$var_Max=max($var_R, $var_G, $var_B);$del_Max=$var_Max-$var_Min;$L=($var_Max+$var_Min)/2;if($del_Max==0){$H=0;$S=0;}else{if($L<0.5)$S=$del_Max/($var_Max+$var_Min);else$S=$del_Max/(2-$var_Max-$var_Min);$del_R=((($var_Max-$var_R)/6)+($del_Max/2))/$del_Max;$del_G=((($var_Max-$var_G)/6)+($del_Max/2))/$del_Max;$del_B=((($var_Max-$var_B)/6)+($del_Max/2))/$del_Max;$H=0.5;if($var_R==$var_Max)$H=$del_B-$del_G;elseif($var_G==$var_Max)$H=(1/3)+$del_R-$del_B;elseif($var_B==$var_Max)$H=(2/3)+$del_G-$del_R;if($H<0)$H++;if($H>1)$H--;}$HSL['H']=round(($H*360));$HSL['S']=round(($S*100));$HSL['L']=round(($L*100));return$returnAsArray?$HSL:implode(",", $HSL);}
 
 if($_SERVER['REQUEST_METHOD'] != 'POST'){
-	$tabTitle = 'Uiiverse - Uiiverse Settings';
+	$tabTitle = 'Uiiverse - Ajustes de Uiiverse';
 	printHeader('');
 
 	$get_user = $dbc->prepare('SELECT * FROM users INNER JOIN profiles ON profiles.user_id = users.user_id WHERE users.user_id = ? LIMIT 1');
@@ -24,22 +24,22 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	echo '</div>
 	<div class="main-column">
 	  <div class="post-list-outline">
-	    <h2 class="label">Uiiverse Settings</h2>
+	    <h2 class="label">Ajustes de Uiiverse</h2>
 	    <form id="account-settings-form" class="setting-form" method="post" action="/settings/account">
 	      <ul class="settings-list">
           <li>
-                  <p class="settings-label"><label for="user_relationship_visibility">Who can comment on your posts?</label></p>
+                  <p class="settings-label"><label for="user_relationship_visibility">¿Quien puede comentar en tus publicaciones?</label></p>
 	          <div class="select-content">
 	            <div class="select-button">
 	              <select name="user_relationship_visibility">
-	                <option value="1"'. ($profile['user_relationship_visibility'] == 1 ? ' selected' : '') .'>Everyone</option>
-	                <option value="2"'. ($profile['user_relationship_visibility'] == 2 ? ' selected' : '') .'>Nobody</option>
+	                <option value="1"'. ($profile['user_relationship_visibility'] == 1 ? ' selected' : '') .'>Todos</option>
+	                <option value="2"'. ($profile['user_relationship_visibility'] == 2 ? ' selected' : '') .'>Nadie</option>
 	              </select>
 	            </div>
 	          </div>
 	        </li>
                   <li>
-                  <p class="settings-label"><label for="locale.lang">View community posts from users who are using which system language?</label></p>
+                  <p class="settings-label"><label for="locale.lang">¿En qué idioma de otros usuarios quieres ver las publicaciones en comunidades?</label></p>
 	          <div class="select-content">
 	            <div class="select-button">
 	              <select name="locale.lang">
@@ -63,29 +63,29 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	          </div>
 	        </li>
             <li>
-                  <p class="settings-label"><label for="locale.lang">Do you want posts that were automatically created by games to show up in your activity feed?</label></p>
+                  <p class="settings-label"><label for="locale.lang">¿Quieres que las publicaciones creadas automaticamente por juegos aparezcan en Actividad?</label></p>
 	          <div class="select-content">
 	            <div class="select-button">
 	              <select name="locale.lang">
-	                <option value="1">Yes</option>
+	                <option value="1">Si</option>
 	                <option value="2">No</option>
 	              </select>
 	            </div>
 	          </div>
 	        </li>
             <li>
-	          <p class="settings-label"><label for="select_notify.empathy_notice_opt_out">Do you want to receive notifications about Yeahs?</label></p>
+	          <p class="settings-label"><label for="select_notify.empathy_notice_opt_out">¿Quieres recibir notificaciónes de Molas?</label></p>
 	          <div class="select-content">
 	            <div class="select-button">
 	              <select name="yeah_notifs" id="yeah_notifs">
-	                <option value="1"'. ($user['yeah_notifs'] == 1 ? ' selected' : '') .'>Receive</option>
-	                <option value="0"'. ($user['yeah_notifs'] == 0 ? ' selected' : '') .'>Don\'t Receive</option>
+	                <option value="1"'. ($user['yeah_notifs'] == 1 ? ' selected' : '') .'>Recibir</option>
+	                <option value="0"'. ($user['yeah_notifs'] == 0 ? ' selected' : '') .'>NoRecibir</option>
 	              </select>
                   </div>
                   </div>
                   </li>
 	      </ul>
-	      <div class="form-buttons"><input type="submit" class="black-button apply-button" value="Save Settings" data-community-id="" data-url-id="" data-track-label="user" data-title-id="" data-track-action="changeSetting" data-track-category="setting"></div>
+	      <div class="form-buttons"><input type="submit" class="black-button apply-button" value="Guardar Ajustes" data-community-id="" data-url-id="" data-track-label="user" data-title-id="" data-track-action="changeSetting" data-track-category="setting"></div>
 	    </form>
 	  </div>
 	</div>
@@ -96,7 +96,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
     <div class="window">
       <h1 class="window-title"></h1>
       <div class="window-body">
-        <p class="window-body-content">Settings saved.</p>
+        <p class="window-body-content">Cambios guardados.</p>
         <div class="form-buttons">
           <button class="ok-button black-button" type="button" data-event-type="ok">OK</button>
         </div>
@@ -121,6 +121,6 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 			setcookie('cedar_color_theme', 'NULL', strtotime('-20 days'), '/');
 			setcookie('hex_color_theme', 'NULL', strtotime('-20 days'));
 		}
-		echo 'Settings saved.';
+		echo 'Cambios guardados.';
 	}
 }

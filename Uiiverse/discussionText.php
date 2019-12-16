@@ -72,22 +72,22 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST'){
 	
 	?>
 		<div class="textarea-container">
-			<textarea name="text_data" class="textarea-text textarea" maxlength="800" placeholder="Share your thoughts in a post to this community."></textarea>
+			<textarea name="text_data" class="textarea-text textarea" maxlength="800" placeholder="Compartir tus pensamientos en una publicación a esta comunidad."></textarea>
 		</div>
 <div class="post-form-topic">
                             <p>Discussion Type</p>
                             <select class="post-form-topic-select" name="topic">
-                                <option value="0" selected="">Open Discussion</option>
-                                <option value="1">Looking for Teammate</option>
-                                <option value="2">Hint</option>
-                                <option value="3">Question</option>
-                                <option value="4">Looking for Opponent</option>
-                                <option value="5">Tournament</option>
-                                <option value="6">Event</option>
+                                <option value="0" selected="">Discusión Abierta</option>
+                                <option value="1">Buscando un Compañero de Equipo</option>
+                                <option value="2">Pista</option>
+                                <option value="3">Pregunta</option>
+                                <option value="4">Buscando un Oponente</option>
+                                <option value="5">Torneo</option>
+                                <option value="6">Evento</option>
                             </select>
                         </div>
 		<div class="form-buttons">
-			<input type="submit" name="submit" class="black-button post-button disabled" value="Send" disabled="">
+			<input type="submit" name="submit" class="black-button post-button disabled" value="Enviar" disabled="">
 		</div>
 	</form>
 	<?php
@@ -97,9 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST'){
 	$image = NULL;
 
 	if (empty($_POST['text_data'])) {
-		$errors[] = 'Please type your discussion. Empty posts are counted as spam and prohibited.';
+		$errors[] = 'Por favor escriba su discusión. Publicaciones vacías cuentan como spam y están prohibidas.';
 	} elseif (mb_strlen($_POST['text_data']) > 800) { 
-		$errors[] = 'Discussions cannot be longer than 800 characters.';
+		$errors[] = 'Discusiones no pueden ser más largas que 800 caracteres.';
 	}
 
 	if (empty($_POST['feeling_id']) || strval($_POST['feeling_id']) >= 6) {

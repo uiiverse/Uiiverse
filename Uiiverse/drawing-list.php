@@ -9,7 +9,7 @@ $title_result = $get_title->get_result();
 
 if ($title_result->num_rows == 0) {
     printHeader(3);
-    exit('<title>Uiiverse - Error</title><div class="no-content track-error" data-track-error="404"><div><p>The community could not be found.</p></div></div>');
+    exit('<title>Uiiverse - Error</title><div class="no-content track-error" data-track-error="404"><div><p>La comunidad no pudo ser encontrada.</p></div></div>');
 }
 
 $title = $title_result->fetch_array();
@@ -58,11 +58,11 @@ if ((isset($_GET['offset']) && is_numeric($_GET['offset'])) && isset($_GET['date
 
     echo '</span>
     </span>
-    '. ($title['type'] == 5 ? '<span class="news-community-badge">Announcement Community</span>' : '') .'
-    '. ($title['type'] == 1 ? '<span class="news-community-badge">Main Community</span>' : '') .'
-        '. ($title['type'] == 2 ? '<span class="news-community-badge">Main Community</span>' : '') .'
-            '. ($title['type'] == 3 ? '<span class="news-community-badge">Main Community</span>' : '') .'
-		'. ($title['type'] == 4 ? '<span class="news-community-badge">Main Community</span>' : '') . ($title['perm'] == 2 ? '<span class="news-community-badge">Private
+    '. ($title['type'] == 5 ? '<span class="news-community-badge">Comunidad de Anuncios</span>' : '') .'
+    '. ($title['type'] == 1 ? '<span class="news-community-badge">Comunidad Principal</span>' : '') .'
+        '. ($title['type'] == 2 ? '<span class="news-community-badge">Comunidad Principal</span>' : '') .'
+            '. ($title['type'] == 3 ? '<span class="news-community-badge">Comunidad Principal</span>' : '') .'
+		'. ($title['type'] == 4 ? '<span class="news-community-badge">Comunidad Principal</span>' : '') . ($title['perm'] == 2 ? '<span class="news-community-badge">Privado
 </span>' : '') .'
     <h1 class="community-name"><a href="/titles/'. $title['title_id'] .'">'. htmlspecialchars($title['title_name'], ENT_QUOTES) .'</a></h1>
     </header>
@@ -74,23 +74,23 @@ if ((isset($_GET['offset']) && is_numeric($_GET['offset'])) && isset($_GET['date
         $get_title_owner->execute();
         $title_owner_result = $get_title_owner->get_result();
         $title_owner = $title_owner_result->fetch_array();
-        echo '<p style="text-align:  center;">Community owner: <a href="/users/'. htmlspecialchars($title_owner['user_name'], ENT_QUOTES) .'/posts">'. $title_owner['user_name'] .'</a></p>';
+        echo '<p style="text-align:  center;">Dueñ@ de la comunidad: <a href="/users/'. htmlspecialchars($title_owner['user_name'], ENT_QUOTES) .'/posts">'. $title_owner['user_name'] .'</a></p>';
     }
       echo '</div><div class="sidebar-setting">
       <div class="sidebar-post-menu">
         <a href="/titles/'. $title['title_id'] .'" class="sidebar-menu-in_game symbol arrow-button">
-            <span>In-Game Posts</span>
+            <span>Publicaciones en juego</span>
           </a>
           <a href="/titles/'. $title['title_id'] .'/diary" class="sidebar-menu-diary symbol">
-            <span>Play Journal Entries</span>
+            <span>Entradas del Diario de Juego</span>
           </a>
         
           <a href="/titles/'. $title['title_id'] .'/artwork" class="sidebar-menu-artwork symbol selected">
-            <span>Drawings</span>
+            <span>Dibujos</span>
           </a>
         
           <a href="/titles/'. $title['title_id'] .'/topic" class="sidebar-menu-topic symbol">
-            <span>Discussions</span>
+            <span>Discusiones</span>
           </a>
         
       </div>
@@ -98,7 +98,7 @@ if ((isset($_GET['offset']) && is_numeric($_GET['offset'])) && isset($_GET['date
   </section>';
 if (!empty($_SESSION['signed_in'])) {
         if ($_SESSION['user_id'] == $title['perm']) {
-            echo '<div id="edit-title"><a class="button symbol" href="/titles/'. $title['title_id'] .'/edit">Community Settings</a></div>';
+            echo '<div id="edit-title"><a class="button symbol" href="/titles/'. $title['title_id'] .'/edit">Ajustes de la Comunidad</a></div>';
         }
         echo '<button type="button" class="symbol button favorite-button';
 
@@ -111,18 +111,18 @@ if (!empty($_SESSION['signed_in'])) {
             echo ' checked ';
         }
 
-        echo '"data-title-id="'. $title['title_id'] .'"><span class="favorite-button-text">Favorite</span></button>';
+        echo '"data-title-id="'. $title['title_id'] .'"><span class="favorite-button-text">Agregar a Favoritos</span></button>';
     }
 
     echo '<div class="sidebar-setting"><div class="sidebar-post-menu"></div></div></section></div><div class="main-column"><div class="post-list-outline"><h2 class="symbol label label-artwork with-filter">
         New Drawings
         <button class="with-filter-right symbol" type="button" data-modal-open="#post-filter-select-page">
-          Filter
+          Filtrar
         </button>
       
     </h2>';
     echo ' <div class="body-content test-topic-post-list-body" id="community-post-list" data-region=""><div class="list multi-timeline-post-list js-post-list">
     <div class="empty post-list">
-          <p>No drawings posted yet.</p>
+          <p>No se han publicado dibujos</p>
         </div>';
 }

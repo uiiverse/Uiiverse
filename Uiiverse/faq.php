@@ -19,9 +19,6 @@ echo '</div>';
     <div id="guide" class="help-content">
       <div class="faq">
         <p>If you have any questions about our service, then this page is the first place to check for an answer.</p>
-        <h2>Why is Uiiverse closed source?</h2>
-        <p>Uiiverse is closed sourced for a few reasons. One reason is for security reasons (We want to keep your accounts safe).</p>
-		<p>Another reason is that the code was donated by Ben, a.k.a the creator of Ziiverse and Pearl, which was closed source.</p>
         
 		<h2>Why did you want to remix a near-perfect Miiverse clone?</h2>
         <p>We remixed Ziiverse because it's creator, Ben, decided to donate its code to us to help speed up development.</p>

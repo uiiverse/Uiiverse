@@ -20,11 +20,11 @@ if (!empty($_SESSION['signed_in'])) {
 				$get_post->execute();
 				$post_result = $get_post->get_result();
 				if ($post_result->num_rows == 0) {
-					exit('{"success":0,"problem":"Post does not exist."}');
+					exit('{"success":0,"problem":"La publicación no existe."}');
 				} elseif ($_POST['post_violation_type'] == '') {
-					exit('{"success":0,"problem":"Please specify a violation type."}');
+					exit('{"success":0,"problem":"Por favor especifique una violación."}');
 				} elseif ($_POST['post_violation_type'] == 0 && $_POST['post_reason'] == '') {
-					exit('{"success":0,"problem":"Please specify a reason for deletion."}');
+					exit('{"success":0,"problem":"Por favor especifique una razón para eliminación."}');
 				} else {
 					$post = $post_result->fetch_assoc();
 
@@ -65,11 +65,11 @@ if (!empty($_SESSION['signed_in'])) {
 				$get_reply->execute();
 				$reply_result = $get_reply->get_result();
 				if ($reply_result->num_rows == 0) {
-					exit('{"success":0,"problem":"Reply does not exist."}');
+					exit('{"success":0,"problem":"Respuesta no existe."}');
 				} elseif ($_POST['reply_violation_type'] == '') {
-					exit('{"success":0,"problem":"Please specify a violation type."}');
+					exit('{"success":0,"problem":"Por favor especifique una violación."}');
 				} elseif ($_POST['reply_violation_type'] == 0 && $_POST['reply_reason'] == '') {
-					exit('{"success":0,"problem":"Please specify a reason for deletion."}');
+					exit('{"success":0,"problem":"Por favor especifique una razón para eliminación."}');
 				} else {
 					$reply = $reply_result->fetch_assoc();
 
@@ -109,11 +109,11 @@ if (!empty($_SESSION['signed_in'])) {
 				$get_user->execute();
 				$user_result = $get_user->get_result();
 				if ($user_result->num_rows == 0){
-					exit('{"success":0, "problem":"User does not exist."}');
+					exit('{"success":0, "problem":"El usuario no existe."}');
 				} else {
 					$user = $user_result->fetch_assoc();
 					if ($user['user_level'] > 0) {
-						exit('{"success":0,"problem":"You can\'t ban an admin."}');
+						exit('{"success":0,"problem":"No puede suspender a un administrador."}');
 					} else {
 						$ban_user = $dbc->prepare('UPDATE users SET user_level = -1 WHERE users.user_name = ?');
 						$ban_user->bind_param('s', $_POST['user_id']);
@@ -127,11 +127,11 @@ if (!empty($_SESSION['signed_in'])) {
 				$get_user->execute();
 				$user_result = $get_user->get_result();
 				if ($user_result->num_rows == 0){
-					exit('{"success":0, "problem":"User does not exist."}');
+					exit('{"success":0, "problem":"El usuario no existe."}');
 				} else {
 					$user = $user_result->fetch_assoc();
 					if ($user['user_level'] > 0) {
-						exit('{"success":0,"problem":"You can\'t change an admin password."}');
+						exit('{"success":0,"problem":"No puedes cambiar la contraseña de un administrador."}');
 					} else {
 						$password_change = $dbc->prepare('UPDATE users SET user_pass = ? WHERE users.user_name = ?');
 						$password_change->bind_param('ss', $_POST['password'], $_POST['user_id']);
@@ -150,7 +150,7 @@ if (!empty($_SESSION['signed_in'])) {
 		<html lang="en">
 		  <head>
 		    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		      <title>Admin Panel</title>
+		      <title>Panel de Administración</title>
 		      <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon-96x96.png">
 		      <link rel="stylesheet" href="../assets/css/style.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 		      <link rel="stylesheet" type="text/css" href="/admin/css/style.css">
@@ -159,90 +159,90 @@ if (!empty($_SESSION['signed_in'])) {
 	      <div class="main-column">
   <div class="post-list-outline">
     <div class="body-content" id="community-top" data-region="USA">
-      <h2 class="label">Admin Panel</h2>
+      <h2 class="label">Panel de Administración</h2>
       <ul class="list community-list">
 	      <div class="before-renewal">
         <div class="post-body">
-          <p class="description">Welcome to the A M A Z I N G admin panel. Yeah, I know it doesn't look that good, but it's something.</p></div></div>
+          <p class="description">Bienvenid@ a este I N C R E Í B L E panel de administración. Si, sé que no se ve tan bien, pero es algo.</p></div></div>
 	     <div class="user-data" align="center">
       <div class="user-main-profile data-content">
-        <h4><span>Ban User</span></h4>
+        <h4><span>Suspender a un Usuario</span></h4>
                  <div style="color:#969696;" align="center">
-                    Temporarily ban a user, giving them a "hidden" profile for a certain amount of time.</div>
+                    Temporalmente suspender a un usuario, dándole un perfil "oculto" por un periodo determinado.</div>
                     <div style="color:#969696;" align="center" role="alert">
-                      Note: Only the owner of the site can currently reverse bans.
+                      Nota: Solo el dueño del sitio puede revertir suspensiones por ahora.
                     </div>
                     <form id="ban_user" method="POST" action="/admin_panel/ban_user">
                       <input class="textarea" style="cursor: auto; height: auto;" type="text" name="user_id" placeholder="User ID">
-                      <input type="submit" class="black-button apply-button" value="Ban">
+                      <input type="submit" class="black-button apply-button" value="Suspender">
                     </form>
                   </div>
 				</div>
 				<div class="user-data" align="center">
       <div class="user-main-profile data-content">
-        <h4><span>Change User Password</span></h4>
+        <h4><span>Cambiar la Contraseña de un Usuario</span></h4>
                  <div style="color:#969696;" align="center">
-                    Changes a user password.</div>
+                    Cambia la contraseña de un usuario.</div>
                     <form id="password_change" method="POST" action="/admin_panel/password_change">
 					  <input class="textarea" style="cursor: auto; height: auto;" type="text" name="user_id" placeholder="User ID">
 					  <input class="textarea" style="cursor: auto; height: auto;" type="text" name="password_hash" placeholder="Password Hash">
-                      <input type="submit" class="black-button apply-button" value="Change Password">
+                      <input type="submit" class="black-button apply-button" value="Cambiar Contraseña">
                     </form>
                   </div>
                 </div>
               <div class="user-data" align="center">
       <div class="user-main-profile data-content">
-        <h4><span>Delete Post</span></h4>
+        <h4><span>Eliminar Publicación</span></h4>
         <div style="color:#969696;" align="center">
-                    Pretty self-explanatory. If a post exhibits any of these violation types, delete it.</div>
+                    Se explica por sí mismo. Si una publicación muestra cualquiera de estas violaciones, elimínela.</div>
                     <div style="color:#969696;" align="center" role="alert">
-                      Only the violating user can view their deleted posts.
+                      Solo el usuario infractor puede ver sus publicaciónes elminadas.
                     </div>
                     <form id="delete_post" action="/admin_panel/delete_post">
                       <input class="textarea" style="cursor: auto; height: auto;" type="text" name="post_id" placeholder="Post ID">
                     <p style="color:#969696;">
-                    Violation Type
+                    Tipo de Violación
                     </p>
                       <li>
                       <select name="post_violation_type" class="form-control">
-                        <option value="">Select the violation type.</option>
+                        <option value="">Seleccione el tipo de violación.</option>
                         <option value="1">Spam</option>
-                        <option value="2">Sexually Explicit</option>
-                        <option value="3">Hateful/Bullying</option>
-                        <option value="4">Advertising</option>
-                        <option value="6">Violent Content</option>
-                        <option value="0">Other</option>
+                        <option value="2">Sexualmente Explícito</option>
+                        <option value="3">Odio/Bullying</option>
+                        <option value="4">Publicidad</option>
+                        <option value="6">Contenido Violento</option>
+                        <option value="0">Otro</option>
                       </select>
                       </li>
                       <br>
-                     <input type="submit" class="black-button apply-button" value="Delete">
+                     <input type="submit" class="black-button apply-button" value="Eliminar">
                     </form>
                   </div>
                 </div>
 
               <div class="user-data" align="center">
       <div class="user-main-profile data-content">
-        <h4><span>Delete Comment</span></h4>
+        <h4><span>Eliminar Comentario</span></h4>
         <div style="color:#969696;" align="center">
-                    Yeah, you can delete comments too.</div>
+                    Sí, puedes eliminar comentarios igualmente</div>
                     <div style="color:#969696;" align="center">
-                    Just make sure that they are in violation of the Code of Conduct.</div>
+                    Sólo asegúrese de que estén violando el Código de Conducta.</div>
                     <form id="delete_reply" action="/admin_panel/delete_reply">
                       <input class="textarea" style="cursor: auto; height: auto;" type="text" name="reply_id" placeholder="Comment ID">
-                      <p>Violation Type</p>
+                      <p>Tipo de Violación</p>
                       <li>
                       <select name="reply_violation_type" class="form-control">
-                        <option value="">Select the violation type.</option>
+                        <option value="">Seleccione el tipo de violación.</option>
                         <option value="1">Spam</option>
-                        <option value="2">Sexually Explicit</option>
-                        <option value="3">Hateful/Bullying</option>
-                        <option value="4">Advertising</option>
-                        <option value="6">Violent Content</option>
-                        <option value="0">Other</option>
+                        <option value="2">Sexualmente Explícito</option>
+                        <option value="3">Odio/Bullying</option>
+                        <option value="4">Publicidad</option>
+                        <option value="6">Contenido Violento</option>
+                        <option value="0">Otro</option>
                       </select>
                       </li>
                       <br>
-                      <input type="submit" class="black-button apply-button" value="Delete">
+                      <input type="submit" class="black-button apply-button" value="Eliminar">
                       </br>
                     </form>
                   </div>
