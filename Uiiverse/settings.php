@@ -300,7 +300,7 @@ Posting such information is against the Uiiverse Code of Conduct and may result 
     		if ($_POST['face-type'] == 2) {
     			$ch = curl_init();
     			curl_setopt_array($ch, array(
-    				CURLOPT_URL => 'https://ariankordi.pf2m.com/seth/'. $_POST['face'],
+    				CURLOPT_URL => 'https://pf2m.com/hash/'. $_POST['face'],
     				CURLOPT_RETURNTRANSFER => true));
     			$response = curl_exec($ch);
                 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
