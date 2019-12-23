@@ -25,9 +25,6 @@ if(empty($_SESSION['signed_in'])){
                     <label>
                         <input type="text" name="username" maxlength="16" title="Uiiverse ID" placeholder="User ID" value="">
                     </label>
-					<label>
-                        <input type="email" name="email" title="Email" placeholder="Email" value="">
-                    </label>
                     <label>
                         <input type="password" name="password" maxlength="16" title="Password" placeholder="Password">
                     </label>
@@ -101,7 +98,7 @@ $forbidden = array("faggot", "nigga", "whore", "nigger", "fucker", "fuck", "fuck
     		$user_result = $search_user->get_result();
 
     		if ($user_result->num_rows > 0) {
-    			$errors[] = 'User ID already exists.';
+    			$errors[] = 'User ID already exists';
     		}
 
     		if ($_POST['password'] != $_POST['confirm_password']) {
@@ -109,13 +106,8 @@ $forbidden = array("faggot", "nigga", "whore", "nigger", "fucker", "fuck", "fuck
     		}
     		if (empty($_POST['password'])) {
     			$errors[] = 'Password cannot be empty.';
-			}
-			if (empty($_POST['email'])) {
-				$errors[] = 'Email cannot be empty.';
-			}
-			if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-				$errors[] = 'Email is invalid.';
-			}
+    		}
+
     		if (strlen($_POST['name']) > 16){
     			$errors[] = 'Name connot be longer than 16 characters.';
     		}
@@ -131,15 +123,12 @@ $forbidden = array("faggot", "nigga", "whore", "nigger", "fucker", "fuck", "fuck
     		} else {
 
     			$username = htmlspecialchars($_POST['username'], ENT_QUOTES);
-				$name = $_POST['name'];
-				$email = $_POST['email'];
+    			$name = $_POST['name'];
 
-				$password_gen = password_hash($_POST['password'], PASSWORD_DEFAULT);
-				
-				$activation_code = md5($email.time());
+    			$password_gen = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    			$new_user = $dbc->prepare('INSERT INTO users (user_name, user_pass, nickname, user_face, date_created, ip, user_level, email, activation_code) VALUES (?,?,?,?,NOW(),?,-2,?,?)');
-    			$new_user->bind_param('sssssss', $username, $password_gen, $name, $face, $_SERVER['REMOTE_ADDR'], $email, $activation_code);
+    			$new_user = $dbc->prepare('INSERT INTO users (user_name, user_pass, nickname, user_face, date_created, ip, user_level) VALUES (?,?,?,?,NOW(),?,-2)');
+    			$new_user->bind_param('sssss', $username, $password_gen, $name, $face, $_SERVER['REMOTE_ADDR']);
     			$new_user->execute();
 
     			$get_user = $dbc->prepare('SELECT user_id FROM users WHERE user_name = ? LIMIT 1');
@@ -157,26 +146,8 @@ $forbidden = array("faggot", "nigga", "whore", "nigger", "fucker", "fuck", "fuck
     				$new_profile = $dbc->prepare('INSERT INTO profiles (user_id) VALUES (?)');
     				$new_profile->bind_param('i', $user['user_id']);
     				$new_profile->execute();
-					
-					$to = $email;
-					$subject = "Activate your Uiiverse account, ". $name ."!";
-					$header = "From: no-reply@uiiverse.xyz \r\n";
-					$header .= "MIME-Version: 1.0\r\n";
-        			$header .= "Content-type: text/html\r\n";
-					$body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='165' height='35'><br>
-					Hey ". $name ."!<br>
-					It seems you have recently created an account for Uiiverse. Before using your account though, you need to activate it.<br>
-					To do so, just <a href='https://uiiverse.xyz/activate/". $activation_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/activate/". $activation_code ."<br>
-					<br>
-					Have a great day!<br>
-					<br>
-					The Uiiverse Team<br>
-					https://uiiverse.xyz/<br>
-					contact@uiiverse.xyz<br>
-					<br>
-					<small>All emails sent by this address are automatically generated. Don't reply to any of these emails or email this address, since none of them are going to be replied to.</small>";
-					mail($to,$subject,$body,$header);
-					$_SESSION['signed_in'] = true;
+
+    				$_SESSION['signed_in'] = true;
     				$_SESSION['user_id'] = $user['user_id'];
     				echo '<META HTTP-EQUIV="refresh" content="0;URL=/">';
     			}

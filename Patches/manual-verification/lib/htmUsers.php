@@ -200,14 +200,14 @@ function verificationScreen()
     <meta property="og:type" content="article">
     </script>
     </head>
-    <title>Uiiverse - Activate your account</title>
+    <title>Uiiverse - Verification</title>
     <body id="guest" class=" guest" data-token="" data-static-root="https://d13ph7xrk1ee39.cloudfront.net/">
     <div id="wrapper">
     <div id="main-body">
     <div class="warning-content warning-content-restricted track-error" data-track-error="restricted">
 				<div>
 					<img src="https://web.archive.org/web/20170721020403im_/https://d13ph7xrk1ee39.cloudfront.net/img/welcome/welcome5-6.png?p9JgI-aYt8p5v_e2FgMn7g">
-					<p>An email has been sent to your email address to activate your account. Check your inbox or spam folders, click the activation URL and log back in.</p>
+					<p>Before signing up to Uiiverse, you need to get approved by an admin.</p>
                     <form id="logout" action="/logout">
 					<input type="submit" class="post-button black-button" value="Sign out" action="/logout">
 				</div>

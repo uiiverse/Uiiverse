@@ -4,12 +4,15 @@
 
 [Official website](https://uiiverse.xyz/)
 
+[Documentation](https://uiiverse.readthedocs.io/en/latest/)
+
 [Discord server](https://discord.gg/7ZE4dp5)
 
 # Features
 
-- Themes
-- Verification system.
+- Themes.
+- Verification system. (Both email and manual)
+- Two factor authentication.
 - Password resetting.
 - Working admin panel.
 
@@ -21,6 +24,7 @@
 - php-mysql
 - mod_php
 - mod_rewrite
+- [PHPGangsta's GoogleAuthenticator Lib](https://github.com/PHPGangsta/GoogleAuthenticator/)
 - [AltoRouter](https://github.com/dannyvankooten/AltoRouter)
 
 # Contributors
@@ -28,7 +32,6 @@
 - [Robert](https://gitlab.com/benatpearl) (Pearl)
 - [EnergeticBark](https://github.com/EnergeticBark/) ([Cedar](https://github.com/EnergeticBark/Cedar-PHP))
 - [joo](https://github.com/j0w0) (Neon, Stripe and Retro)
-- [PF2M](https://github.com/PF2M) (Drawing)
 
 # Thanks to
 

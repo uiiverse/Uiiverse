@@ -221,13 +221,6 @@ Posting such information is against the Uiiverse Code of Conduct and may result 
     }
     echo '</div>
 	</div>
-	<p class="settings-label">Change your email</p>
-    <p class="note">Changes your Uiiverse email.</p>
-    <div class="select-content">
-	  <div class="select-button">
-	  <a href="/change-email" class="black-button">Change Email</a>
-	</div>
-	</div>
   </li>
 </ul>
 <div class="form-buttons">
@@ -248,7 +241,8 @@ Posting such information is against the Uiiverse Code of Conduct and may result 
     		$birthday = date('Y-m-d', strtotime($_POST['birthday']));
     		$user_change = $dbc->prepare('UPDATE profiles SET birthday = ? WHERE user_id = ?');
     		$user_change->bind_param('si', $birthday, $_SESSION['user_id']);
-    		$user_change->execute();
+    		$user_change->execute();Told a streamer that I was coding in PHP and he told me "Why are you coding in PHP? Just code in real programming languages."
+
     	}
     	if($_POST['country'] == 1 || 2 || 3 || 4 || 5 || 6 || 7){
     		$user_change = $dbc->prepare('UPDATE profiles SET country = ? WHERE user_id = ?');
@@ -300,7 +294,7 @@ Posting such information is against the Uiiverse Code of Conduct and may result 
     		if ($_POST['face-type'] == 2) {
     			$ch = curl_init();
     			curl_setopt_array($ch, array(
-    				CURLOPT_URL => 'https://pf2m.com/hash/'. $_POST['face'],
+    				CURLOPT_URL => 'https://ariankordi.pf2m.com/seth/'. $_POST['face'],
     				CURLOPT_RETURNTRANSFER => true));
     			$response = curl_exec($ch);
                 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);

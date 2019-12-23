@@ -13,6 +13,10 @@ $router->addRoutes(array(
     array('GET|POST', '/login', 'login.php', 'Login'),
     array('GET|POST', '/signup', 'signup.php', 'Signup'),
     array('GET|POST', '/logout', 'logout.php', 'Logout'),
+    array('GET|POST', '/2fa', '2fa.php', '2FA'),
+    array('GET|POST', '/enable-2fa', 'enable2FA.php', 'Enable 2FA'),
+    array('GET|POST', '/disable-2fa', 'disable2FA.php', 'Disable 2FA'),
+    array('GET|POST', '/change-email', 'changeEmail.php', 'Change-email'),
     array('GET|POST', '/settings/profile', 'settings.php', 'Settings'),
     array('GET|POST', '/guide/terms', 'terms.php', 'Terms'),
     array('GET|POST', '/guide/', 'rules.php', 'Rules'),
@@ -22,6 +26,7 @@ $router->addRoutes(array(
     array('GET|POST', '/settings/theme', 'theme_settings.php', 'Theme-settings'),
     array('GET|POST', '/admin_panel', 'admin/admin.php', 'Admin'),
     array('GET|POST', '/admin_panel/[*:action]', 'admin/admin.php', 'Admin-option'),
+    array('GET|POST', '/activate/[*:code]', 'activate.php', 'Activate'),
     array('GET', '/users/[*:action]/posts', 'users.php', 'Users'),
     array('GET', '/users/[*:action]/yeahs', 'userYeahs.php', 'User-yeahs'),
     array('GET', '/users/[*:action]/', 'userDiary.php', 'User-profile'),
@@ -51,7 +56,9 @@ $router->addRoutes(array(
 array('GET|POST', '/titles/[i:title_id]/topic', 'discussion-list.php', 'Open-discussions'),
 array('GET|POST', '/titles/[i:title_id]/artwork', 'drawing-list.php', 'Artwork'),
 array('GET|POST', '/titles/[i:title_id]/diary', 'diary-list.php', 'Community-diary'),
-array('GET|POST', '/forgot/', 'forgot.php', 'Forgot your Password?')
+array('GET|POST', '/forgot/', 'forgot.php', 'Forgot your Password?'),
+array('GET|POST', '/reset/[*:code]', 'reset.php', 'Reset-code'),
+array('GET|POST', '/reset/', 'reset.php', 'Reset')
 ));
 // Match the current request
 $match = $router->match(urldecode($_SERVER['REQUEST_URI']));

@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
         <title>Forgot your password?</title>
         <div class="hb-contents-wrapper"><div class="hb-container hb-l-inside">
             <h2>Forgot your password?</h2>
-            <p>Enter your new password here.</p>
+            <p>Send an email to reset your password.</p>
         </div>
 
         <form method="post" enctype="multipart/form-data">
@@ -21,10 +21,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 
                 <div class="auth-input-double">               
                     <label>
-                        <input type="password" name="password" maxlength="16" title="Password" placeholder="Password">
-                    </label>
-                    <label>
-                        <input type="password" name="confirm_password" maxlength="16" title="Password" placeholder="Confirm Password">
+                        <input type="email" name="email" title="Email" placeholder="Email">
                     </label>
                 <input type="submit" name="submit" class="hb-btn hb-is-decide" style="margin-top: 4px;" id="btn_text" value="Submit">
             </form>
@@ -33,20 +30,55 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
     <?php
     } else {
     	if (isset($_POST['submit'])) {
-    		$errors = array();
             
-    		if ($_POST['password'] != $_POST['confirm_password']) {
-    			$errors[] = 'Passwords do not match.';
-    		}
-    		if (empty($_POST['password'])) {
-    			$errors[] = 'Password cannot be empty.';
-    		}
+                $errors = array();
 
-    		if (!empty($errors)){
-    			echo '<script type="text/javascript">alert("' . $errors[0] . '");</script><META HTTP-EQUIV="refresh" content="0;URL=/signup">';
-    		} else {
-    			$password_gen = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                echo '<center><br><br><br><br><br><p>Send this to a moderator on Uiiverse or at contact@uiiverse.xyz: <p>' . $password_gen . '</center>';
-    		}
-    	}
+                $search_user = $dbc->prepare('SELECT * FROM users WHERE email = ? LIMIT 1');
+                $search_user->bind_param('s', $_POST['email']);
+                $search_user->execute();
+                $user_result = $search_user->get_result();
+                $user = $user_result->fetch_assoc();
+                
+                if ($user_result->num_rows == 0) {
+                    $errors[] = 'User doesn\'t exist.';
+                }
+                if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                    $errors[] = 'Email is invalid.';
+                }
+                if (empty($_POST['email'])) {
+                    $errors[] = 'Email cannot be empty.';
+                }
+
+                if (!empty($errors)){
+                    echo '<script type="text/javascript">alert("' . $errors[0] . '");</script><META HTTP-EQUIV="refresh" content="0;URL=/forgot">';
+                } else {
+                    $email = $_POST['email'];
+                    $reset_code = md5($email.time());
+                    $name = $user['nickname'];
+                    $user_change = $dbc->prepare('UPDATE users SET reset_code = ? WHERE users.user_id = ?');
+                    $user_change->bind_param('ss', $reset_code, $user['user_id']);
+                    $user_change->execute();
+
+                    $to = $email;
+                    $subject = "Reset your password";
+                    $header = "From: no-reply@uiiverse.xyz \r\n";
+                    $header .= "MIME-Version: 1.0\r\n";
+                    $header .= "Content-type: text/html\r\n";
+                    $body = "<img src='https://i.ibb.co/dMPvqk9/logo.png' alt='Uiiverse' width='165' height='35'><br>
+                    Hey ". $name ."!<br>
+                    It seems you have requested a password reset.<br>
+                    To reset your password, just <a href='https://uiiverse.xyz/reset/". $reset_code ."'>click this link</a> or go to the next URL: https://uiiverse.xyz/reset/". $reset_code ."<br>
+                    If you didn't request a password reset, you can safely ignore this email.<br>
+                    <br>
+                    Have a great day!<br>
+                    <br>
+                    The Uiiverse Team<br>
+                    https://uiiverse.xyz/<br>
+                    contact@uiiverse.xyz<br>
+                    <br>
+                    <small>All emails sent by this address are automatically generated. Don't reply to any of these emails or email this address, since none of them are going to be replied to.</small>";
+                    mail($to,$subject,$body,$header);
+                    echo '<center><br><br><br><br><br><p>An email has been sent to your email address. Please check your inbox or your spam folder.</center>';
+                }
+    	    }
     }

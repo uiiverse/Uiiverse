@@ -20,7 +20,7 @@ if (!$dbc) {
 
 @$dbc->set_charset('utf8') || mysql_machine_broke();
 //sets timezones
-@$dbc->query('SET time_zone = "-4:00";') || mysql_machine_broke();
+@$dbc->query('SET time_zone = "-5:00";') || mysql_machine_broke();
 date_default_timezone_set('America/New_York');
 if (session_status() == PHP_SESSION_NONE) {
     session_name('graham');
