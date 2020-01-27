@@ -6,7 +6,7 @@ function printFace($face, $feeling)
 {
     if (strpos($face, "i.imgur") || strpos($face, "cloudinary")) {
         return $face;
-    } else {
+    } elseif (!empty($face)) {
         switch ($feeling) {
             case 0:
                 $type = "_normal_face.png";
@@ -28,6 +28,8 @@ function printFace($face, $feeling)
                 break;
         }
         return 'https://mii-secure.cdn.nintendo.net/'. htmlspecialchars($face, ENT_QUOTES) . $type;
+    } else {
+	return 'https://i.imgur.com/kmKVmny.png';
     }
 }
 
