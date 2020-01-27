@@ -247,6 +247,9 @@ if (isset($_COOKIE['neon-color'])) {
     <script src="/assets/js/favico.js"></script>
     <script src="/assets/js/tippy.all.min.js"></script>
     <script src="/assets/js/yeah.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon-precomposed" href="https://i.imgur.com/GDJpACC.png" />
     <meta property="og:site_name" content="Uiiverse">
     <meta property="og:type" content="article">
     </head>
