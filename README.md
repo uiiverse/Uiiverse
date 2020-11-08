@@ -1,12 +1,7 @@
-[![# Uiiverse](https://i.ibb.co/dMPvqk9/logo.png)](https://uiiverse.xyz/)
+**NOTE: Uiiverse is not being hosted anymore nor is being updated. This repo is meant for archival purposes.**
+![# Uiiverse](https://i.ibb.co/dMPvqk9/logo.png)
 
 **A Pearl-based Miiverse clone with many themes.**
-
-[Official website](https://uiiverse.xyz/)
-
-[Documentation](https://uiiverse.readthedocs.io/en/latest/)
-
-[Discord server](https://discord.gg/7ZE4dp5)
 
 # Features
 
@@ -35,9 +30,9 @@
 
 # Thanks to
 
-- Robert (again) for letting me use most of his code
+- Luna (again) for letting me use most of his code
 - Seth for doing Cedar
-- joo for themes and JS
+- jo for themes and JS
 - The Uiiverse Team for helping me do this
 - Everyone at Uiiverse for supporting the project
 - You for checking this out
