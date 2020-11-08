@@ -31,7 +31,7 @@
 
 # Thanks to
 
-- Luna (again) for letting me use most of his code
+- Robert (again) for letting me use most of his code
 - Seth for doing Cedar
 - jo for themes and JS
 - The Uiiverse Team for helping me do this
