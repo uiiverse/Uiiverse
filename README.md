@@ -1,4 +1,5 @@
 **NOTE: Uiiverse is not being hosted anymore nor is being updated. This repo is meant for archival purposes.**
+**DON'T REHOST.**
 
 ![# Uiiverse](https://i.ibb.co/dMPvqk9/logo.png)
 
