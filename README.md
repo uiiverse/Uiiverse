@@ -1,6 +1,3 @@
-**NOTE: Uiiverse is not being hosted anymore nor is being updated. This repo is meant for archival purposes.**
-**DON'T REHOST.**
-
 ![# Uiiverse](https://i.ibb.co/dMPvqk9/logo.png)
 
 **A Pearl-based Miiverse clone with many themes.**
@@ -26,13 +23,11 @@
 
 # Contributors
 
-- [Robert](https://gitlab.com/benatpearl) (Pearl)
 - [EnergeticBark](https://github.com/EnergeticBark/) ([Cedar](https://github.com/EnergeticBark/Cedar-PHP))
 - [jo](https://github.com/j0w0) (Neon, Stripe and Retro)
 
 # Thanks to
 
-- Robert (again) for letting me use most of his code
 - Seth for doing Cedar
 - jo for themes and JS
 - The Uiiverse Team for helping me do this
